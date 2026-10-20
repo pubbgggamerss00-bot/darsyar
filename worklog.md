@@ -118,3 +118,24 @@ Stage Summary:
 - ۴ کتاب به ترتیب الزامی: عربی هشتم(teal/languages)، زبان انگلیسی هشتم(pink/message)، پیام‌های آسمان هشتم(amber/sparkles)، کار و فناوری هشتم(red/wrench) = ۱۲ فصل
 - مجموع آیتم‌ها: ۷۲ = ۲۴ answer + ۲۴ note + ۲۴ exam (هر فصل دقیقاً ۶ آیتم)
 - tsc check: بدون خطا مربوط به این فایل (clean)
+
+---
+Task ID: 4
+Agent: Z.ai Code (main)
+Task: تکمیل اپ وب، ساخت APK اندروید و آپلود پروژه در گیت‌هاب
+
+Work Log:
+- اسکیمای Prisma (Grade/Book/Chapter/Content) نوشته و با db:push اعمال شد؛ دیتابیس با ۳ پایه، ۲۴ کتاب، ۷۲ فصل و ۴۳۲ محتوا Seed شد.
+- API روت‌ها ساخته شد: GET /api/grades، GET /api/books?grade=N، GET /api/books/[id]، POST /api/chat (هوش مصنوعی با z-ai-web-dev-sdk + system prompt فارسی مناسب پایه‌های ۷-۹ + هدرهای CORS برای اپ اندروید).
+- رابط کاربری تک‌صفحه‌ای RTL فارسی با فونت Vazirmatn ساخته شد: ویو خانه (انتخاب پایه + هیرو + کارت دستیار)، ویو پایه (هدر گرادیانی + آمار + لیست کتاب‌ها با جلد رنگی)، ویو کتاب (فصل‌ها + ۳ تب جواب سوالات/نکات مهم/سوالات امتحانی + پاسخ تشریحی تاشو)، ویو چت هوشمند (با چیپ درس مرتبط، تایپینگ و پیشنهاد سوال) و BottomNav چهارگانه با Sheet «بیشتر».
+- تصاویر هیرو و ربات با مهارت image-generation تولید و آیکون‌های لانچر با sharp ساخته شد.
+- تست کامل با Agent Browser: جریان خانه → پایه هشتم → ریاضی هشتم → تب سوالات امتحانی (باز شدن پاسخ) → چت هوشمند (پاسخ صحیح AI) بدون خطای کنسول؛ tsc و eslint تمیز.
+- APK اندروید بدون Gradle/Android Studio ساخته شد: دانلود build-tools 34 و platform-34، کامپایل با aapt2 + ecj (به‌جای javac چون فقط JRE موجود بود) + d8، امضا با apksigner؛ اپ WebView آفلاین با کل محتوا (۳۰۵KB HTML + تصاویر) و تنظیم آدرس سرور برای دستیار هوشمند.
+- ریپازیتوری github.com/pubbgggamerss00-bot/darsyar ساخته و کد push شد؛ Release v1.0.0 با فایل darsyar.apk (امضاشده، تأیید apksigner verify) منتشر شد.
+
+Stage Summary:
+- اپ وب کامل و در حال اجرا روی پورت ۳۰۰۰ (تست مرورگری موفق).
+- خروجی APK: apk/darsyar.apk (~۳۰۵KB) — آفلاین کامل برای محتوا + دستیار هوشمند با آدرس سرور قابل تنظیم.
+- ریپازیتوری: https://github.com/pubbgggamerss00-bot/darsyar
+- Release: https://github.com/pubbgggamerss00-bot/darsyar/releases/tag/v1.0.0
+- هشدار امنیتی: توکن گیت‌هاب در چت افشا شده — کاربر باید آن را Revoke کند.
