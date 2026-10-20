@@ -17,6 +17,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import type { BookDetail, GradeSummary, GradeWithBooks } from "@/lib/app-types";
+import { apiUrl } from "@/lib/api-url";
 
 type View = "home" | "grade" | "book" | "chat";
 
@@ -37,7 +38,7 @@ export default function DarsyarApp() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/grades")
+    fetch(apiUrl("/api/grades"))
       .then((r) => r.json())
       .then((d) => {
         if (!cancelled) setGrades(d.grades ?? []);
@@ -68,7 +69,7 @@ export default function DarsyarApp() {
       setGradeError(false);
       setGrade(null);
       try {
-        const res = await fetch(`/api/books?grade=${n}`);
+        const res = await fetch(apiUrl(`/api/books?grade=${n}`));
         const d = await res.json();
         if (d.grade) {
           setGrade(d.grade);
@@ -96,7 +97,7 @@ export default function DarsyarApp() {
     setBookError(false);
     setBook(null);
     try {
-      const res = await fetch(`/api/books/${id}`);
+      const res = await fetch(apiUrl(`/api/books/${id}`));
       const d = await res.json();
       if (d.book) setBook(d.book);
       else setBookError(true);

@@ -62,3 +62,9 @@ prompt
 server.log
 # Skills directory
 /skills/
+# مسیر آپلود sandbox — watch/tailwind نباید آن را اسکن کنند (مونت FUSE معیوب)
+/upload
+
+# فایل‌های موقت ابزار و لاگ سرور
+tool-results/
+dev.log

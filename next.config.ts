@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
+  // Turbopack مشخص می‌شود؛ پیکربندی webpack فقط برای build استفاده می‌شود
+  turbopack: {},
   // جلوگیری از توقف سرور توسعه هنگام اسکن پوشه‌های سیستمی (upload/download)
   webpack: (config) => {
     config.watchOptions = {

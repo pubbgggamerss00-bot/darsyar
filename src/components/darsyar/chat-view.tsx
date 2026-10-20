@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Send, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toFa } from "@/lib/persian";
+import { apiUrl } from "@/lib/api-url";
 
 export interface ChatContext {
   grade: number;
@@ -76,7 +77,7 @@ export function ChatView({ context, onClearContext, onBack }: ChatViewProps) {
     setSending(true);
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(apiUrl("/api/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
