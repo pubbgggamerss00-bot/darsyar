@@ -541,3 +541,24 @@ Stage Summary:
 - APK نهایی: /home/z/my-project/apk/darsyar.apk — 472,077 بایت (~462 کیلوبایت)، versionCode 2، versionName 1.1.0، امضاشده با darsyar.keystore، minSdk 24 / targetSdk 34
 - assets/www/index.html داخل APK: 973,819 بایت (974KB، رشد از 299KB) شامل محتوای کامل ۲۴ کتاب هر ۳ پایه: ۲۷۶ فصل و ۱,۶۵۶ آیتم (۶۰۰ + ۵۶۴ + ۴۹۲)
 - فایل‌های به‌روزشده: apk/assets/www/index.html، apk/assets/www/img/hero.png، apk/assets/www/img/robot.png (بازبهینه‌سازی)، apk/AndroidManifest.xml (فقط version)، apk/darsyar.apk
+---
+Task ID: 7-b
+Agent: general-purpose
+Task: انتشار نسخه ۱٫۱٫۰ در گیت‌هاب
+
+Work Log:
+- worklog.md (سطرهای پایانی) خوانده شد برای آشنایی با پروتکل؛ از مسیر خراب upload پرهیز شد و هیچ جست‌وجوی بازگشتی از ریشه پروژه اجرا نشد.
+- git status بررسی شد: شش فایل اصلاح‌شده (apk/AndroidManifest.xml، apk/assets/www/index.html، apk/darsyar.apk، apk/darsyar.apk.idsig، next.config.ts، worklog.md) و یک فایل تازه (scripts/mount-monitor.sh)؛ scripts/dbcheck.ts از قبل کامیت‌شده و بدون تغییر بود.
+- فایل‌های پیش‌تر ردیابی‌شده در apk/ با git ls-files تطبیق داده شد و darsyar.apk.idsig هم که قبلاً ردیابی می‌شد به استیجینگ اضافه شد؛ فایل‌های زائد tool-results/ استیج نشدند.
+- کامیت با پیام «نسخه ۱٫۱٫۰: APK آفلاین با محتوای کامل ۲۴ کتاب و ۲۷۶ فصل» ساخته شد → هش b3d3e13 (۷ فایل، ۴۹ افزودنی، ۳ حذفی).
+- پوش به main با توکن در URL (بدون ذخیره توکن در .git/config یا هیچ فایلی) موفق شد: 3b39b03..b3d3e13.
+- ریلیزهای موجود بررسی شد (v1.0.0 با asset نام darsyar.apk و بدنه فارسی مارک‌داون‌دار) و سبک آن الگوی ریلیز جدید قرار گرفت.
+- ریلیز v1.1.0 با نام «نسخه ۱٫۱٫۰ — محتوای کامل» روی commit main ساخته شد (release id 418492540، draft:false، prerelease:false) با بدنه فارسی شامل تازه‌های نسخه (۲۴ کتاب، ۲۷۶ فصل، ۱۶۵۶ محتوا به تفکیک پایه، دستیار هوشمند، آفلاین کامل).
+- APK با نام darsyar-v1.1.0.apk به ریلیز آپلود شد: state=uploaded، حجم دقیق 472,077 بایت، sha256 ثبت‌شده eebcfd98…bac59.
+- راستی‌آزمایی نهایی با releases/tags/v1.1.0: browser_download_url موجود و state=uploaded؛ فایل موقت payload ریلیز از /tmp پاک شد.
+
+Stage Summary:
+- کامیت: b3d3e13 «نسخه ۱٫۱٫۰: APK آفلاین با محتوای کامل ۲۴ کتاب و ۲۷۶ فصل» روی main (پوش‌شده به pubbgggamerss00-bot/darsyar)
+- ریلیز: https://github.com/pubbgggamerss00-bot/darsyar/releases/tag/v1.1.0 (نسخه ۱٫۱٫۰ — محتوای کامل)
+- دانلود APK: https://github.com/pubbgggamerss00-bot/darsyar/releases/download/v1.1.0/darsyar-v1.1.0.apk (472,077 بایت، versionCode 2، versionName 1.1.0)
+- توکن گیت‌هاب در هیچ فایلی ذخیره نشد؛ فقط در URL پوش/درخواست‌های curl استفاده شد
