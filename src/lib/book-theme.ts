@@ -76,6 +76,64 @@ export function getBookTheme(color: string): BookTheme {
   return THEMES[color] ?? THEMES.blue;
 }
 
+/** تم گرادیانی هر پایه تحصیلی */
+export interface GradeTheme {
+  /** گرادیان هدر و کارت پایه */
+  gradient: string;
+  /** پس‌زمینه ملایم */
+  soft: string;
+  /** رنگ متن */
+  text: string;
+  /** سایه رنگی کارت */
+  shadow: string;
+}
+
+const GRADE_THEMES: Record<number, GradeTheme> = {
+  7: {
+    gradient: "from-emerald-400 via-teal-400 to-cyan-500",
+    soft: "bg-emerald-50",
+    text: "text-emerald-600",
+    shadow: "shadow-emerald-500/30",
+  },
+  8: {
+    gradient: "from-amber-400 via-orange-400 to-orange-500",
+    soft: "bg-amber-50",
+    text: "text-amber-600",
+    shadow: "shadow-amber-500/30",
+  },
+  9: {
+    gradient: "from-violet-500 via-fuchsia-500 to-pink-500",
+    soft: "bg-violet-50",
+    text: "text-violet-600",
+    shadow: "shadow-fuchsia-500/30",
+  },
+};
+
+export function getGradeTheme(grade: number): GradeTheme {
+  return GRADE_THEMES[grade] ?? GRADE_THEMES[9];
+}
+
+/**
+ * برچسب واحد هر کتاب درسی بر اساس موضوع:
+ * «درس» برای فارسی/عربی/انگلیسی/پیام‌های آسمان/مطالعات اجتماعی،
+ * «فصل» برای ریاضی/علوم تجربی، «کارگاه» برای کار و فناوری.
+ */
+export type UnitLabel = "درس" | "فصل" | "کارگاه";
+
+export function getUnitLabel(subject: string): UnitLabel {
+  if (subject.includes("کار") && subject.includes("فناوری")) return "کارگاه";
+  if (subject.includes("فارسی") || subject.includes("عربی") || subject.includes("انگلیسی"))
+    return "درس";
+  if (subject.includes("آسمان") || subject.includes("مطالعات")) return "درس";
+  return "فصل";
+}
+
+/** برچسب «همه واحدها» برای چیپ انتخاب همه */
+export function getAllUnitsLabel(subject: string): string {
+  const unit = getUnitLabel(subject);
+  return `همه ${unit}‌ها`;
+}
+
 const ICONS: Record<string, LucideIcon> = {
   calculator: Calculator,
   flask: FlaskConical,

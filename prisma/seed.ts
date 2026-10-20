@@ -19,6 +19,7 @@ async function main() {
       data: { number: g.number, name: g.name, subtitle: g.subtitle },
     });
 
+    // فهرست همه کتاب‌ها با ترتیب مشخص
     for (let bi = 0; bi < g.books.length; bi++) {
       const b = g.books[bi];
       const book = await prisma.book.create({
@@ -33,32 +34,48 @@ async function main() {
         },
       });
 
+      // ساخت همه فصل‌ها به‌صورت گروهی
+      const chapterRows = b.chapters.map((c, ci) => ({
+        bookId: book.id,
+        number: c.number,
+        title: c.title,
+        pages: c.pages,
+        order: ci + 1,
+      }));
+      await prisma.chapter.createMany({ data: chapterRows });
+
+      // یافتن شناسه‌های فصل‌های ساخته‌شده برای این کتاب
+      const savedChapters = await prisma.chapter.findMany({
+        where: { bookId: book.id },
+        orderBy: { order: "asc" },
+      });
+
+      // ساخت همه محتواها به‌صورت گروهی
+      const contentRows: {
+        chapterId: number;
+        type: string;
+        title: string;
+        body: string;
+        pageRef: string | null;
+        order: number;
+      }[] = [];
       for (let ci = 0; ci < b.chapters.length; ci++) {
         const c = b.chapters[ci];
-        const chapter = await prisma.chapter.create({
-          data: {
-            bookId: book.id,
-            number: c.number,
-            title: c.title,
-            pages: c.pages,
-            order: ci + 1,
-          },
-        });
-
-        for (let ii = 0; ii < c.contents.length; ii++) {
-          const item = c.contents[ii];
-          await prisma.content.create({
-            data: {
-              chapterId: chapter.id,
-              type: item.type,
-              title: item.title,
-              body: item.body,
-              pageRef: item.pageRef ?? null,
-              order: ii + 1,
-            },
+        const savedChapter = savedChapters[ci];
+        c.contents.forEach((item, ii) => {
+          contentRows.push({
+            chapterId: savedChapter.id,
+            type: item.type,
+            title: item.title,
+            body: item.body,
+            pageRef: item.pageRef ?? null,
+            order: ii + 1,
           });
-        }
+        });
       }
+      await prisma.content.createMany({ data: contentRows });
+
+      console.log(`کتاب «${b.title}» با ${b.chapters.length} فصل ذخیره شد.`);
     }
     console.log(`پایه ${g.number} با ${g.books.length} کتاب ذخیره شد.`);
   }

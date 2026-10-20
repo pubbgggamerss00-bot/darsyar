@@ -21,13 +21,17 @@ export function BookCover({ title, subject, color, size = "md", className }: Boo
   return (
     <div
       className={cn(
-        "relative flex shrink-0 flex-col justify-between overflow-hidden rounded-lg bg-gradient-to-br p-1.5 text-white shadow-md",
+        "relative flex shrink-0 flex-col justify-between overflow-hidden rounded-xl bg-gradient-to-br p-1.5 text-white shadow-md",
         theme.gradient,
         SIZES[size],
         className
       )}
     >
       <span className="absolute inset-y-0 right-0 w-1 bg-white/25" aria-hidden />
+      <span
+        aria-hidden
+        className="absolute -left-3 -top-3 h-8 w-8 rounded-full bg-white/20 transition-transform group-hover:scale-125"
+      />
       <span className="line-clamp-1 pr-1 text-[0.9em] font-medium leading-4 text-white/85">
         {subject}
       </span>

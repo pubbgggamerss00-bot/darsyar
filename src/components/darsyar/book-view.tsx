@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
   Bot,
@@ -12,7 +13,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toFa } from "@/lib/persian";
-import { getBookTheme } from "@/lib/book-theme";
+import { getAllUnitsLabel, getBookTheme, getUnitLabel } from "@/lib/book-theme";
 import type { BookDetail, ContentItem } from "@/lib/app-types";
 import { BookCover } from "./book-cover";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -24,35 +25,35 @@ const TAB_META: Record<
   {
     label: string;
     icon: typeof Lightbulb;
-    activeCls: string;
+    pillCls: string;
     badgeCls: string;
-    cardBorder: string;
-    iconCls: string;
+    accentCls: string;
+    chipCls: string;
   }
 > = {
   answer: {
     label: "جواب سوالات",
     icon: MessageCircleQuestion,
-    activeCls: "bg-emerald-500 text-white shadow-md shadow-emerald-500/25",
+    pillCls: "bg-gradient-to-br from-emerald-400 to-teal-500 shadow-md shadow-emerald-500/30",
     badgeCls: "bg-emerald-50 text-emerald-600",
-    cardBorder: "border-emerald-100",
-    iconCls: "bg-emerald-50 text-emerald-600",
+    accentCls: "border-r-emerald-400",
+    chipCls: "bg-emerald-50 text-emerald-600 hover:bg-emerald-100",
   },
   note: {
     label: "نکات مهم",
     icon: Lightbulb,
-    activeCls: "bg-amber-500 text-white shadow-md shadow-amber-500/25",
+    pillCls: "bg-gradient-to-br from-amber-400 to-orange-500 shadow-md shadow-amber-500/30",
     badgeCls: "bg-amber-50 text-amber-600",
-    cardBorder: "border-amber-100",
-    iconCls: "bg-amber-50 text-amber-600",
+    accentCls: "border-r-amber-400",
+    chipCls: "bg-amber-50 text-amber-600 hover:bg-amber-100",
   },
   exam: {
     label: "سوالات امتحانی",
     icon: FileQuestion,
-    activeCls: "bg-violet-500 text-white shadow-md shadow-violet-500/25",
+    pillCls: "bg-gradient-to-br from-violet-500 to-fuchsia-500 shadow-md shadow-violet-500/30",
     badgeCls: "bg-violet-50 text-violet-600",
-    cardBorder: "border-violet-100",
-    iconCls: "bg-violet-50 text-violet-600",
+    accentCls: "border-r-violet-400",
+    chipCls: "bg-violet-50 text-violet-600 hover:bg-violet-100",
   },
 };
 
@@ -62,7 +63,15 @@ function ContentCard({ item, tab }: { item: ContentItem; tab: TabKey }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <article className={cn("rounded-2xl border bg-white p-4 shadow-sm", meta.cardBorder)}>
+    <motion.article
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 26 }}
+      className={cn(
+        "rounded-2xl border border-r-4 border-slate-100 bg-white p-4 shadow-sm",
+        meta.accentCls
+      )}
+    >
       <div className="mb-2 flex items-center justify-between gap-2">
         <span
           className={cn(
@@ -87,7 +96,10 @@ function ContentCard({ item, tab }: { item: ContentItem; tab: TabKey }) {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center gap-1 rounded-full bg-violet-50 px-3 py-1.5 text-xs font-bold text-violet-600 transition-colors hover:bg-violet-100"
+            className={cn(
+              "inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold transition-colors",
+              meta.chipCls
+            )}
             aria-expanded={open}
           >
             {open ? "بستن پاسخ" : "مشاهده پاسخ تشریحی"}
@@ -96,18 +108,29 @@ function ContentCard({ item, tab }: { item: ContentItem; tab: TabKey }) {
               aria-hidden
             />
           </button>
-          {open && (
-            <p className="thin-scrollbar mt-3 max-h-72 overflow-y-auto whitespace-pre-wrap rounded-xl bg-violet-50/60 p-3 text-[13px] leading-6 text-slate-700">
-              {item.body}
-            </p>
-          )}
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.div
+                key="exam-answer"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.28, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <p className="thin-scrollbar mt-3 max-h-72 overflow-y-auto whitespace-pre-wrap rounded-xl bg-violet-50/60 p-3 text-[13px] leading-6 text-slate-700">
+                  {item.body}
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ) : (
         <p className="mt-1.5 whitespace-pre-wrap text-[13px] leading-6 text-slate-600">
           {item.body}
         </p>
       )}
-    </article>
+    </motion.article>
   );
 }
 
@@ -143,6 +166,8 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
   }
 
   const theme = getBookTheme(book.color);
+  const unitLabel = getUnitLabel(book.subject);
+  const allUnitsLabel = getAllUnitsLabel(book.subject);
   const visibleChapters =
     chapter === "all" ? book.chapters : book.chapters.filter((c) => c.number === chapter);
 
@@ -156,13 +181,24 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
   return (
     <div>
       {/* هدر کتاب */}
-      <header className={cn("rounded-b-[2rem] bg-gradient-to-bl p-5 pb-14 text-white", theme.gradient)}>
-        <div className="flex items-center gap-3">
+      <header
+        className={cn(
+          "relative overflow-hidden rounded-b-[2rem] bg-gradient-to-bl p-5 pb-14 text-white shadow-lg",
+          theme.gradient
+        )}
+      >
+        {/* دایره‌های تزئینی */}
+        <span aria-hidden className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-white/10" />
+        <span aria-hidden className="absolute left-14 top-16 h-12 w-12 animate-float rounded-full bg-white/15" />
+        <span aria-hidden className="absolute -bottom-10 right-1/3 h-24 w-24 rounded-full bg-white/10" />
+        <span aria-hidden className="absolute right-6 bottom-10 h-2 w-2 animate-float-fast rounded-full bg-white/70" />
+
+        <div className="relative flex items-center gap-3">
           <button
             type="button"
             aria-label="بازگشت"
             onClick={onBack}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15 transition-colors hover:bg-white/25"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur transition-colors hover:bg-white/25"
           >
             <ArrowRight className="h-5 w-5" aria-hidden />
           </button>
@@ -170,21 +206,27 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
             <p className="text-xs text-white/80">{book.gradeName}</p>
             <h1 className="text-xl font-extrabold">{book.title}</h1>
           </div>
-          <BookCover title={book.title} subject={book.subject} color={book.color} size="sm" className="shadow-lg" />
+          <BookCover
+            title={book.title}
+            subject={book.subject}
+            color={book.color}
+            size="sm"
+            className="shadow-lg ring-2 ring-white/40"
+          />
         </div>
-        <p className="mt-2.5 text-[13px] leading-6 text-white/85">{book.description}</p>
+        <p className="relative mt-2.5 text-[13px] leading-6 text-white/85">{book.description}</p>
       </header>
 
       <main className="-mt-8 px-4 pb-8">
         {/* آمار کتاب */}
         <section
           aria-label="آمار کتاب"
-          className="mb-5 grid grid-cols-4 divide-x divide-x-reverse divide-slate-100 rounded-2xl border border-slate-100 bg-white p-3 shadow-sm"
+          className="mb-5 grid grid-cols-4 divide-x divide-x-reverse divide-slate-100 rounded-2xl border border-white/70 bg-white/90 p-3 shadow-md shadow-violet-500/5 backdrop-blur"
         >
           <div className="flex flex-col items-center gap-0.5 px-1 text-center">
             <Layers className="h-4 w-4 text-slate-400" aria-hidden />
             <span className="text-base font-extrabold text-slate-800">{toFa(book.chapterCount)}</span>
-            <span className="text-[10px] text-slate-400">فصل</span>
+            <span className="text-[10px] text-slate-400">{unitLabel}</span>
           </div>
           <div className="flex flex-col items-center gap-0.5 px-1 text-center">
             <MessageCircleQuestion className="h-4 w-4 text-emerald-500" aria-hidden />
@@ -203,8 +245,8 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
           </div>
         </section>
 
-        {/* انتخاب فصل */}
-        <section aria-label="انتخاب فصل" className="mb-4">
+        {/* انتخاب درس/فصل/کارگاه */}
+        <section aria-label={`انتخاب ${unitLabel}`} className="mb-4">
           <div className="no-scrollbar flex gap-2 overflow-x-auto pb-1">
             <button
               type="button"
@@ -212,11 +254,11 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
               className={cn(
                 "shrink-0 rounded-2xl border px-4 py-2 text-xs font-bold transition-all",
                 chapter === "all"
-                  ? "border-slate-700 bg-slate-700 text-white shadow-md"
-                  : "border-slate-200 bg-white text-slate-500 hover:border-slate-300"
+                  ? cn("border-transparent bg-gradient-to-l text-white shadow-md", theme.gradient)
+                  : "border-slate-200 bg-white text-slate-500 hover:border-violet-200 hover:text-violet-500"
               )}
             >
-              همه فصل‌ها
+              {allUnitsLabel}
             </button>
             {book.chapters.map((c) => (
               <button
@@ -226,41 +268,63 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
                 className={cn(
                   "shrink-0 rounded-2xl border px-3.5 py-1.5 text-right transition-all",
                   chapter === c.number
-                    ? "border-slate-700 bg-slate-700 text-white shadow-md"
-                    : "border-slate-200 bg-white text-slate-500 hover:border-slate-300"
+                    ? cn("border-transparent bg-gradient-to-l text-white shadow-md", theme.gradient)
+                    : "border-slate-200 bg-white text-slate-500 hover:border-violet-200 hover:text-violet-500"
                 )}
               >
-                <span className="block text-[10px] opacity-75">فصل {toFa(c.number)}</span>
+                <span className="block text-[10px] opacity-75">
+                  {unitLabel} {toFa(c.number)}
+                </span>
                 <span className="block max-w-[140px] truncate text-xs font-bold">{c.title}</span>
               </button>
             ))}
           </div>
         </section>
 
-        {/* تب‌های محتوا */}
-        <section aria-label="نوع محتوا" className="mb-5 grid grid-cols-3 gap-2">
-          {(Object.keys(TAB_META) as TabKey[]).map((t) => {
-            const meta = TAB_META[t];
-            const Icon = meta.icon;
-            return (
-              <button
-                key={t}
-                type="button"
-                onClick={() => setTab(t)}
-                className={cn(
-                  "flex flex-col items-center gap-1 rounded-2xl border border-slate-100 bg-white px-2 py-2.5 text-[11px] font-bold text-slate-500 transition-all",
-                  tab === t && meta.activeCls
-                )}
-                aria-pressed={tab === t}
-              >
-                <Icon className="h-5 w-5" aria-hidden />
-                {meta.label}
-                <span className={cn("rounded-full px-2 py-0.5 text-[10px]", meta.badgeCls)}>
-                  {toFa(countOf(t))}
-                </span>
-              </button>
-            );
-          })}
+        {/* تب‌های محتوا با قرص لغزان */}
+        <section aria-label="نوع محتوا" className="mb-5">
+          <div className="grid grid-cols-3 gap-1 rounded-2xl border border-slate-100 bg-white p-1.5 shadow-sm">
+            {(Object.keys(TAB_META) as TabKey[]).map((t) => {
+              const meta = TAB_META[t];
+              const Icon = meta.icon;
+              const isActive = tab === t;
+              return (
+                <button
+                  key={t}
+                  type="button"
+                  onClick={() => setTab(t)}
+                  aria-pressed={isActive}
+                  className="relative flex flex-col items-center gap-0.5 rounded-xl px-1.5 py-2 text-[11px] font-bold transition-colors"
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="book-tab-pill"
+                      className={cn("absolute inset-0 rounded-xl", meta.pillCls)}
+                      transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                      aria-hidden
+                    />
+                  )}
+                  <span
+                    className={cn(
+                      "relative z-10 flex flex-col items-center gap-0.5",
+                      isActive ? "text-white" : "text-slate-500"
+                    )}
+                  >
+                    <Icon className="h-5 w-5" aria-hidden />
+                    {meta.label}
+                    <span
+                      className={cn(
+                        "rounded-full px-2 py-0.5 text-[10px]",
+                        isActive ? "bg-white/20 text-white" : meta.badgeCls
+                      )}
+                    >
+                      {toFa(countOf(t))}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </section>
 
         {/* محتوا */}
@@ -273,10 +337,19 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
             const items = c.contents.filter((i) => i.type === tab);
             if (items.length === 0) return null;
             return (
-              <section key={c.id} className="mb-6" aria-label={`فصل ${toFa(c.number)}`}>
-                <div className="mb-2.5 flex items-center justify-between gap-2 rounded-xl bg-slate-50 px-3.5 py-2">
+              <section key={c.id} className="mb-6" aria-label={`${unitLabel} ${toFa(c.number)}`}>
+                <div
+                  className={cn(
+                    "mb-2.5 flex items-center justify-between gap-2 rounded-xl border px-3.5 py-2",
+                    theme.soft,
+                    theme.softBorder
+                  )}
+                >
                   <h3 className="text-sm font-bold text-slate-700">
-                    فصل {toFa(c.number)}: {c.title}
+                    <span className={theme.text}>
+                      {unitLabel} {toFa(c.number)}:
+                    </span>{" "}
+                    {c.title}
                   </h3>
                   <span className="shrink-0 text-[10px] text-slate-400">صفحات {c.pages}</span>
                 </div>
@@ -294,22 +367,22 @@ export function BookView({ book, loading, error, onBack, onOpenChat }: BookViewP
         <button
           type="button"
           onClick={onOpenChat}
-          className="mt-2 flex w-full items-center justify-between rounded-2xl border border-blue-100 bg-gradient-to-l from-sky-50 to-white p-4 text-right transition-shadow hover:shadow-md"
+          className="relative mt-2 flex w-full items-center justify-between overflow-hidden rounded-3xl bg-gradient-to-l from-violet-600 via-fuchsia-500 to-fuchsia-400 p-4 text-right text-white shadow-lg shadow-fuchsia-500/25 transition-transform hover:-translate-y-0.5"
         >
-          <span className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white">
+          <span aria-hidden className="absolute -left-5 -top-8 h-24 w-24 rounded-full bg-white/10" />
+          <span aria-hidden className="absolute -bottom-8 right-1/3 h-16 w-16 rounded-full bg-white/10" />
+          <span className="relative flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
               <Bot className="h-6 w-6" aria-hidden />
             </span>
             <span>
-              <span className="block text-sm font-bold text-slate-800">
-                جواب سوالت را پیدا نکردی؟
-              </span>
-              <span className="block text-xs text-slate-400">
+              <span className="block text-sm font-extrabold">جواب سوالت را پیدا نکردی؟</span>
+              <span className="block text-xs text-white/80">
                 همین سوال را از دستیار هوشمند درسیار بپرس
               </span>
             </span>
           </span>
-          <span className="rounded-full bg-blue-600 px-3 py-1.5 text-xs font-bold text-white">
+          <span className="relative rounded-full bg-white px-3.5 py-1.5 text-xs font-bold text-violet-600 shadow-sm">
             بپرس
           </span>
         </button>

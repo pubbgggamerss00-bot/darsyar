@@ -1,8 +1,11 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Bell, Bot, ChevronLeft, Globe, Layers, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { toFa } from "@/lib/persian";
+import { getGradeTheme, getUnitLabel } from "@/lib/book-theme";
+import { cn } from "@/lib/utils";
 import type { GradeWithBooks } from "@/lib/app-types";
 import { BookCover } from "./book-cover";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -39,27 +42,65 @@ export function GradeView({ grade, loading, error, onOpenBook, onOpenChat }: Gra
     );
   }
 
+  const gt = getGradeTheme(grade.number);
+  const unitLabel = getUnitLabel(grade.books[0]?.subject ?? "");
   const totalChapters = grade.books.reduce((acc, b) => acc + b.chapterCount, 0);
   const totalItems = grade.books.reduce(
     (acc, b) => acc + b.answerCount + b.noteCount + b.examCount,
     0
   );
 
+  const stats = [
+    {
+      icon: Globe,
+      iconCls: "bg-violet-50 text-violet-500",
+      value: grade.books.length,
+      label: "کتاب درسی",
+    },
+    {
+      icon: Layers,
+      iconCls: "bg-emerald-50 text-emerald-500",
+      value: totalChapters,
+      label: `${unitLabel} آماده`,
+    },
+    {
+      icon: Sparkles,
+      iconCls: "bg-amber-50 text-amber-500",
+      value: totalItems,
+      label: "پاسخ و نکته",
+    },
+  ];
+
   return (
     <div>
-      {/* هدر گرادیانی */}
-      <header className="rounded-b-[2rem] bg-gradient-to-bl from-blue-600 via-blue-500 to-sky-500 px-5 pb-12 pt-5 text-white">
-        <div className="flex items-start justify-between">
+      {/* هدر گرادیانی پایه */}
+      <header
+        className={cn(
+          "relative overflow-hidden rounded-b-[2rem] bg-gradient-to-bl px-5 pb-12 pt-5 text-white shadow-lg",
+          gt.gradient
+        )}
+      >
+        {/* دایره‌های تزئینی شناور */}
+        <span aria-hidden className="absolute -left-10 -top-10 h-32 w-32 rounded-full bg-white/10" />
+        <span aria-hidden className="absolute left-12 top-14 h-14 w-14 animate-float rounded-full bg-white/15" />
+        <span aria-hidden className="absolute -bottom-12 right-1/4 h-28 w-28 rounded-full bg-white/10" />
+        <span aria-hidden className="absolute right-8 top-8 h-2.5 w-2.5 animate-float-fast rounded-full bg-white/60" />
+        <span aria-hidden className="absolute left-1/3 bottom-6 h-2 w-2 animate-wiggle rounded-full bg-amber-200/80" />
+
+        <div className="relative flex items-start justify-between">
           <div>
-            <p className="text-sm text-white/85">سلام، آماده یادگیری هستی؟</p>
-            <h1 className="mt-1 text-2xl font-extrabold">{grade.name}</h1>
-            <p className="mt-1 text-[13px] text-white/80">{grade.subtitle}</p>
+            <p className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs text-white/90 backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5 text-amber-200" aria-hidden />
+              سلام، آماده یادگیری هستی؟
+            </p>
+            <h1 className="mt-2 text-2xl font-extrabold">{grade.name}</h1>
+            <p className="mt-1 text-[13px] text-white/85">{grade.subtitle}</p>
           </div>
           <button
             type="button"
             aria-label="اعلان‌ها"
             onClick={() => toast({ title: "اعلان جدیدی ندارید" })}
-            className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-white/15 backdrop-blur transition-colors hover:bg-white/25"
+            className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-white/15 backdrop-blur transition-colors hover:bg-white/25"
           >
             <Bell className="h-5 w-5" aria-hidden />
             <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-amber-300" aria-hidden />
@@ -68,26 +109,26 @@ export function GradeView({ grade, loading, error, onOpenBook, onOpenChat }: Gra
       </header>
 
       <main className="-mt-8 px-4 pb-8">
-        {/* کارت آمار */}
-        <section
-          aria-label="آمار پایه"
-          className="mb-6 grid grid-cols-3 divide-x divide-x-reverse divide-slate-100 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm"
-        >
-          <div className="flex flex-col items-center gap-1 px-1 text-center">
-            <Globe className="h-5 w-5 text-blue-500" aria-hidden />
-            <span className="text-lg font-extrabold text-slate-800">{toFa(grade.books.length)}</span>
-            <span className="text-[11px] text-slate-400">کتاب درسی</span>
-          </div>
-          <div className="flex flex-col items-center gap-1 px-1 text-center">
-            <Layers className="h-5 w-5 text-emerald-500" aria-hidden />
-            <span className="text-lg font-extrabold text-slate-800">{toFa(totalChapters)}</span>
-            <span className="text-[11px] text-slate-400">فصل آماده</span>
-          </div>
-          <div className="flex flex-col items-center gap-1 px-1 text-center">
-            <Sparkles className="h-5 w-5 text-amber-500" aria-hidden />
-            <span className="text-lg font-extrabold text-slate-800">{toFa(totalItems)}</span>
-            <span className="text-[11px] text-slate-400">پاسخ و نکته</span>
-          </div>
+        {/* کارت‌های آمار شیشه‌ای */}
+        <section aria-label="آمار پایه" className="mb-6 grid grid-cols-3 gap-2">
+          {stats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.06 * i, type: "spring", stiffness: 260, damping: 22 }}
+                className="flex flex-col items-center gap-1 rounded-2xl border border-white/70 bg-white/90 p-3 text-center shadow-md shadow-violet-500/5 backdrop-blur"
+              >
+                <span className={cn("flex h-8 w-8 items-center justify-center rounded-xl", s.iconCls)}>
+                  <Icon className="h-4 w-4" aria-hidden />
+                </span>
+                <span className="text-lg font-extrabold text-slate-800">{toFa(s.value)}</span>
+                <span className="text-[10px] text-slate-400">{s.label}</span>
+              </motion.div>
+            );
+          })}
         </section>
 
         {/* لیست کتاب‌ها */}
@@ -99,18 +140,29 @@ export function GradeView({ grade, loading, error, onOpenBook, onOpenChat }: Gra
               </h2>
               <p className="text-xs text-slate-400">کتاب‌های رسمی درسی را انتخاب کن</p>
             </div>
-            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-bold text-blue-600">
+            <span
+              className={cn(
+                "rounded-full px-3 py-1 text-xs font-bold",
+                gt.soft,
+                gt.text
+              )}
+            >
               {toFa(grade.books.length)} کتاب
             </span>
           </div>
 
           <div className="space-y-3">
-            {grade.books.map((b) => (
-              <button
+            {grade.books.map((b, i) => (
+              <motion.button
                 key={b.id}
                 type="button"
                 onClick={() => onOpenBook(b.id)}
-                className="group flex w-full items-center gap-3 rounded-2xl border border-slate-100 bg-white p-3 text-right shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 * i, type: "spring", stiffness: 280, damping: 24 }}
+                whileHover={{ y: -4, scale: 1.01 }}
+                whileTap={{ scale: 0.98 }}
+                className="group flex w-full items-center gap-3 rounded-2xl border border-slate-100 bg-white p-3 text-right shadow-sm transition-shadow hover:shadow-md hover:shadow-violet-500/10"
               >
                 <BookCover title={b.title} subject={b.subject} color={b.color} />
                 <span className="flex-1">
@@ -130,29 +182,40 @@ export function GradeView({ grade, loading, error, onOpenBook, onOpenChat }: Gra
                     </span>
                   </span>
                 </span>
-                <ChevronLeft className="h-5 w-5 shrink-0 text-slate-300 transition-colors group-hover:text-blue-500" aria-hidden />
-              </button>
+                <ChevronLeft
+                  className="h-5 w-5 shrink-0 text-slate-300 transition-colors group-hover:text-violet-500"
+                  aria-hidden
+                />
+              </motion.button>
             ))}
           </div>
         </section>
 
         {/* دستیار هوشمند */}
-        <button
+        <motion.button
           type="button"
           onClick={() => onOpenChat({ grade: grade.number })}
-          className="mt-6 flex w-full items-center justify-between rounded-2xl border border-blue-100 bg-gradient-to-l from-sky-50 to-white p-4 text-right transition-shadow hover:shadow-md"
+          whileHover={{ y: -3 }}
+          whileTap={{ scale: 0.98 }}
+          className="relative mt-6 flex w-full items-center justify-between overflow-hidden rounded-3xl bg-gradient-to-l from-violet-600 via-fuchsia-500 to-fuchsia-400 p-4 text-right text-white shadow-lg shadow-fuchsia-500/25"
         >
-          <span className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-600 text-white">
+          <span aria-hidden className="absolute -left-5 -top-8 h-24 w-24 rounded-full bg-white/10" />
+          <span aria-hidden className="absolute -bottom-8 right-1/3 h-16 w-16 rounded-full bg-white/10" />
+          <span className="relative flex items-center gap-3">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
               <Bot className="h-6 w-6" aria-hidden />
             </span>
             <span>
-              <span className="block text-sm font-bold text-slate-800">سوالی داری؟ از درسیار بپرس</span>
-              <span className="block text-xs text-slate-400">دستیار هوشمند مخصوص پایه {toFa(grade.number)}</span>
+              <span className="block text-sm font-extrabold">سوالی داری؟ از درسیار بپرس</span>
+              <span className="block text-xs text-white/80">
+                دستیار هوشمند مخصوص پایه {toFa(grade.number)}
+              </span>
             </span>
           </span>
-          <ChevronLeft className="h-5 w-5 text-blue-400" aria-hidden />
-        </button>
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-white/20">
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+          </span>
+        </motion.button>
       </main>
     </div>
   );
