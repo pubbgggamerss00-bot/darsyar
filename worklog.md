@@ -521,3 +521,23 @@ Stage Summary:
 - فایل تولیدشده: /home/z/my-project/src/data/books/g8-persian.ts (export const g8Persian: SeedBook)
 - ۱۹ فصل (ستایش + ۱۸ درس)، مجموع ۱۱۴ آیتم = ۳۸ answer + ۳۸ note + ۳۸ exam
 - tsc check: بدون خطا برای این فایل؛ مارکر دو مرحله‌ای کاملاً حذف شد؛ آماده برای اتصال به GradeData پایه هشتم
+---
+Task ID: 7-a
+Agent: general-purpose
+Task: بازسازی APK آفلاین با محتوای کامل ۲۴ کتاب
+
+Work Log:
+- worklog.md (۱۹ سطر پایانی) خوانده شد برای آشنایی با پروتکل؛ از مسیر خراب upload پرهیز شد و هیچ جست‌وجوی بازگشتی از ریشه پروژه اجرا نشد.
+- وضعیت پیش از کار ثبت شد: apk/assets/www/index.html قدیمی 305,531 بایت (mtime 10:23، داده‌های کهنه با ۳ فصل به‌ازای هر کتاب) و apk/darsyar.apk قدیمی 312,333 بایت (mtime 10:24).
+- «bun scripts/generate-offline.ts» اجرا شد: تصاویر hero.png و robot.png با sharp دوباره بهینه و index.html از نو ساخته شد؛ خروجی اسکریپت: «index.html ساخته شد (951 کیلوبایت)».
+- صحت داده‌های تزریق‌شده با bun تأیید شد: پایه هفتم ۸ کتاب / ۱۰۰ فصل / ۶۰۰ آیتم، هشتم ۸ / ۹۴ / ۵۶۴، نهم ۸ / ۸۲ / ۴۹۲ (مطابق انتظار dbcheck)؛ عنوان «خورشید پنهان» در index.html موجود است.
+- apk/AndroidManifest.xml ویرایش شد: فقط android:versionCode از 1 به 2 و android:versionName از 1.0.0 به 1.1.0 تغییر کرد؛ سایر خطوط دست‌نخورده ماند.
+- «bash apk/build.sh» اجرا شد: از کش /tmp/android-sdk (build-tools android-14 و platform android-34) استفاده شد و هیچ دانلود مجددی رخ نداد؛ مراحل aapt2 compile/link، کامپایل جاوا با ecj، dex با d8، zipalign و امضا با apksigner و کلید موجود darsyar.keystore با موفقیت کامل شد.
+- راستی‌آزمایی خروجی: apk/darsyar.apk تازه با mtime 14:21 و حجم 472,077 بایت (در بازه 300KB تا 1MB)؛ «aapt2 dump badging» → package ir.darsyar.app / versionCode='2' / versionName='1.1.0' / minSdk 24 / targetSdk 34؛ «apksigner verify» گواهی CN=Darsyar,O=Darsyar,C=IR را معتبر نشان داد.
+- بررسی داده داخل APK: «unzip -p apk/darsyar.apk assets/www/index.html | grep -o "خورشید پنهان" | head -1» → «خورشید پنهان»؛ «unzip -p ... | wc -c» → 973,819 بایت (دقیقاً برابر index.html بازتولیدشده).
+- هیچ فایلی از src/data یا سورس اپ تغییر نکرد؛ ساخت APK انجام شد و commit گیت نگفته شد (طبق دستور).
+
+Stage Summary:
+- APK نهایی: /home/z/my-project/apk/darsyar.apk — 472,077 بایت (~462 کیلوبایت)، versionCode 2، versionName 1.1.0، امضاشده با darsyar.keystore، minSdk 24 / targetSdk 34
+- assets/www/index.html داخل APK: 973,819 بایت (974KB، رشد از 299KB) شامل محتوای کامل ۲۴ کتاب هر ۳ پایه: ۲۷۶ فصل و ۱,۶۵۶ آیتم (۶۰۰ + ۵۶۴ + ۴۹۲)
+- فایل‌های به‌روزشده: apk/assets/www/index.html، apk/assets/www/img/hero.png، apk/assets/www/img/robot.png (بازبهینه‌سازی)، apk/AndroidManifest.xml (فقط version)، apk/darsyar.apk
