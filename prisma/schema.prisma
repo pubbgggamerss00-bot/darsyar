@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// پایه تحصیلی (۷، ۸، ۹)
+model Grade {
+  id       Int    @id @default(autoincrement())
+  number   Int    @unique
+  name     String
+  subtitle String
+  books    Book[]
+}
+
+// کتاب درسی
+model Book {
+  id          Int       @id @default(autoincrement())
+  gradeId     Int
+  grade       Grade     @relation(fields: [gradeId], references: [id])
+  title       String
+  subject     String
+  description String
+  color       String
+  icon        String
+  order       Int
+  chapters    Chapter[]
+}
+
+// فصل کتاب
+model Chapter {
+  id       Int       @id @default(autoincrement())
+  bookId   Int
+  book     Book      @relation(fields: [bookId], references: [id])
+  number   Int
+  title    String
+  pages    String
+  order    Int
+  contents Content[]
+}
+
+// محتوا: جواب سوال / نکته مهم / سوال امتحانی
+model Content {
+  id        Int     @id @default(autoincrement())
+  chapterId Int
+  chapter   Chapter @relation(fields: [chapterId], references: [id])
+  type      String // "answer" | "note" | "exam"
+  title     String
+  body      String
+  pageRef   String?
+  order     Int
+}
