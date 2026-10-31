@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="fa"><head><title>کتاب‌خوان: ارمغان ایران (۲)</title><link href="assets/fonts.css" rel="stylesheet"/><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/>
+
+<style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* 60fps GPU Hardware accelerated keyframe animations */
+@keyframes floatDana {
+  0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.2)); }
+  50% { transform: translateY(-5px); filter: drop-shadow(0 10px 22px rgba(251, 191, 36, 0.35)); }
+}
+@keyframes pulseRadar {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes shimmerWave {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float-dana {
+  animation: floatDana 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-shimmer {
+  animation: shimmerWave 2.2s infinite linear;
+}
+.fade-in-up-card {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.book-perspective-wrapper {
+  perspective: 1200px;
+}
+.page-spread-card {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
+  will-change: transform, box-shadow;
+}
+.page-spread-card.turning-next {
+  transform: rotateY(-7deg) scale(0.985) translateX(-8px);
+  box-shadow: 12px 16px 36px rgba(0, 0, 0, 0.45);
+}
+.page-spread-card.turning-prev {
+  transform: rotateY(7deg) scale(0.985) translateX(8px);
+  box-shadow: -12px 16px 36px rgba(0, 0, 0, 0.45);
+}
+.dog-ear-curl {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.dog-ear-curl:hover, .dog-ear-curl:active {
+  transform: scale(1.22) translate(1px, -1px);
+}
+</style><script src="assets/tailwind.js"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#31394d",
+          "secondary-container": "#2f3aa3",
+          "on-tertiary-container": "#005a7b",
+          "secondary-fixed-dim": "#bdc2ff",
+          "on-primary-fixed-variant": "#5c4300",
+          "inverse-surface": "#dae2fd",
+          "on-primary-container": "#6c4f00",
+          "tertiary-fixed": "#c4e7ff",
+          "on-primary-fixed": "#261a00",
+          "tertiary-fixed-dim": "#7bd0ff",
+          "primary-container": "#fbbf24",
+          "surface-tint": "#f9bd22",
+          "secondary-fixed": "#e0e0ff",
+          "on-secondary-fixed": "#000767",
+          "on-primary": "#402d00",
+          "inverse-primary": "#795900",
+          "on-surface-variant": "#d3c5ac",
+          "surface-dim": "#0b1326",
+          "on-tertiary": "#00354a",
+          "primary-fixed": "#ffdf9f",
+          "inverse-on-surface": "#283044",
+          "on-error-container": "#ffdad6",
+          "surface": "#0b1326",
+          "on-background": "#dae2fd",
+          "on-secondary-fixed-variant": "#2f3aa3",
+          "error-container": "#93000a",
+          "on-tertiary-fixed": "#001e2c",
+          "primary": "#ffe1a7",
+          "tertiary": "#c8e9ff",
+          "surface-container-lowest": "#060e20",
+          "secondary": "#bdc2ff",
+          "on-secondary": "#131e8c",
+          "tertiary-container": "#82d2ff",
+          "outline-variant": "#4f4633",
+          "surface-container-low": "#131b2e",
+          "outline": "#9c8f79",
+          "on-error": "#690005",
+          "error": "#ffb4ab",
+          "surface-container-high": "#222a3d",
+          "surface-container": "#171f33",
+          "on-secondary-container": "#a8afff",
+          "on-surface": "#dae2fd",
+          "surface-variant": "#2d3449",
+          "background": "#0b1326",
+          "surface-container-highest": "#2d3449",
+          "on-tertiary-fixed-variant": "#004c69",
+          "primary-fixed-dim": "#f9bd22"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "margin": "1rem",
+          "margin-tablet": "1.5rem",
+          "gutter-desktop": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin-desktop": "2.5rem",
+          "space-xl": "2rem",
+          "gutter": "1rem",
+          "space-md": "1rem",
+          "space-2xl": "3rem"
+        },
+        "fontFamily": {
+          "label-md": ["Vazirmatn"],
+          "body-md": ["Vazirmatn"],
+          "display": ["Vazirmatn"],
+          "headline-sm": ["Vazirmatn"],
+          "display-mobile": ["Vazirmatn"],
+          "body-sm": ["Vazirmatn"],
+          "label-sm": ["Vazirmatn"],
+          "headline-lg-mobile": ["Vazirmatn"],
+          "headline-lg": ["Vazirmatn"],
+          "body-lg": ["Vazirmatn"],
+          "headline-md": ["Vazirmatn"],
+          "label-lg": ["Vazirmatn"]
+        },
+        "fontSize": {
+          "label-md": ["13px", { "lineHeight": "20px", "fontWeight": "600" }],
+          "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "display": ["36px", { "lineHeight": "52px", "fontWeight": "800" }],
+          "headline-sm": ["17px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "display-mobile": ["28px", { "lineHeight": "40px", "fontWeight": "800" }],
+          "body-sm": ["12px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "label-sm": ["11px", { "lineHeight": "16px", "fontWeight": "700" }],
+          "headline-lg-mobile": ["22px", { "lineHeight": "34px", "fontWeight": "700" }],
+          "headline-lg": ["28px", { "lineHeight": "42px", "fontWeight": "700" }],
+          "body-lg": ["16px", { "lineHeight": "28px", "fontWeight": "500" }],
+          "headline-md": ["20px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "label-lg": ["15px", { "lineHeight": "24px", "fontWeight": "700" }]
+        }
+      }
+    }
+  }
+</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style></head><body class="bg-background font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_4px_20px_rgba(0,0,0,0.35)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="بازگشت به فهرست کتاب" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-all active:scale-90" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><div class="flex flex-col text-right"><h1 class="font-headline-sm text-headline-sm text-primary leading-tight truncate max-w-[160px]">کتاب‌خوان تعاملی</h1><span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary-fixed-dim">menu_book</span>فصل دوم: صورت و معنا</span></div></div><div class="flex items-center gap-1.5"><!-- Night Mode Badge Indicator --><div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high border border-outline-variant/40 text-primary-fixed-dim font-label-sm text-label-sm mr-1"><span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">dark_mode</span><span>حالت شب</span></div><button aria-label="روخوانی هوشمند صوتی" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container bg-surface-container hover:bg-surface-container-high transition-all active:scale-90"><span class="material-symbols-outlined text-[20px]">record_voice_over</span></button><button aria-label="نشان‌گذاری صفحه" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-[20px]">bookmark_border</span></button><div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm shadow-sm ring-1 ring-primary/30 transition-transform active:scale-95"><span class="material-symbols-outlined text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-background flex-1"><div class="flex flex-col w-full pb-10 select-none">
+<!-- Top Gamified Learning Bar & Book Controls -->
+<div class="px-margin pt-3 pb-2 flex flex-col gap-space-sm">
+<!-- Level 1 Floating Bar: Stats & Progress -->
+<div class="bg-surface-container-low border border-surface-container-highest/60 rounded-2xl p-space-sm shadow-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high border border-primary/20 flex items-center justify-center text-primary-fixed-dim font-headline-sm shadow-inner">
+<span class="material-symbols-outlined text-[22px]">auto_stories</span>
+</div>
+<div class="flex flex-col text-right">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">فارسی پایه هشتم</span>
+<span class="bg-surface-container-highest text-primary-fixed-dim border border-primary/20 px-2 py-0.5 rounded-full font-label-sm text-label-sm">درس چهارم</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ارمغان ایران • صفحه ۳۸ و ۳۹</span>
+</div>
+</div>
+<!-- Streak & XP Gamification Badge -->
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-surface-container-high border border-primary-container/20 px-3 py-1.5 rounded-full text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-primary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>+۳۵ XP</span>
+</div>
+<button aria-label="مداد هایلایت و یادداشت" class="w-10 h-10 rounded-xl bg-surface-container border border-surface-container-highest text-on-surface-variant flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all" id="pencilBtn">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Multi-Layer Smart Reading Toggle Switchers -->
+<div class="flex items-center justify-between gap-1.5 overflow-x-auto no-scrollbar py-1">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-primary-container text-on-primary-container font-label-md text-label-md shadow-md transition-all active:scale-95 shrink-0" id="toggleVocabBtn" onclick="toggleAnnotation('vocab')">
+<span class="material-symbols-outlined text-[18px]">translate</span>
+<span>واژه‌نامه و معنی</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 shrink-0" id="toggleRhetoricBtn" onclick="toggleAnnotation('rhetoric')">
+<span class="material-symbols-outlined text-[18px] text-secondary">psychology</span>
+<span>آرایه‌ها و مسند</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all active:scale-95 shrink-0" id="toggleVoiceBtn" onclick="toggleAudioPlayback()">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim" id="audioIcon">volume_up</span>
+<span id="audioStatusText">صوت گویندگی</span>
+</button>
+</div>
+</div>
+<!-- 3D Perspective Virtual Book Spread Container -->
+<div class="px-margin my-2 book-perspective-wrapper">
+<div class="page-spread-card relative w-full bg-surface-container-low border border-surface-container-highest/80 rounded-3xl p-5 sm:p-6 shadow-2xl overflow-hidden transition-all duration-500" id="pageCard">
+<!-- Top Corner Interactive Page-Curl Indicator (Visual cue for flipping) -->
+<div class="dog-ear-curl absolute top-0 left-0 w-12 h-12 cursor-pointer z-30 group" onclick="flipToPage(2)" title="ورق زدن به صفحه بعد">
+<svg class="w-full h-full text-surface-container-high drop-shadow-md" fill="none" viewbox="0 0 48 48">
+<path d="M0 0 L48 0 L0 48 Z" fill="currentColor"></path>
+<path d="M48 0 L0 48 L14 14 Z" fill="rgba(251, 191, 36, 0.25)"></path>
+</svg>
+<span class="material-symbols-outlined absolute top-1 left-1 text-[14px] text-primary group-hover:rotate-45 transition-transform">auto_awesome</span>
+</div>
+<!-- Book Spine Decorative Inner Gradient & Shading Line (Gutter Depth) -->
+<div class="absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-black/40 via-black/15 to-transparent pointer-events-none z-10"></div>
+<div class="absolute inset-y-0 right-0 w-[2px] bg-primary/25"></div>
+<!-- Watermark Islamic Arabesque Motif (Subtle Background) -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 opacity-[0.04] pointer-events-none text-primary">
+<svg class="w-full h-full" fill="currentColor" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="2"></circle>
+<path d="M50 5 L63 38 L95 50 L63 62 L50 95 L37 62 L5 50 L37 38 Z" fill="currentColor"></path>
+<path d="M50 20 L58 42 L80 50 L58 58 L50 80 L42 58 L20 50 L42 42 Z" fill="none" stroke="currentColor" stroke-width="2"></path>
+</svg>
+</div>
+<!-- PAGE CONTENT 1 (Active View: درس چهارم: ارمغان ایران) -->
+<div class="flex flex-col gap-space-md relative z-10" id="contentPage1">
+<!-- Official Textbook Ministry Stamp Header -->
+<div class="flex items-center justify-between pb-3 bg-surface-container px-3.5 py-2.5 rounded-2xl border border-surface-container-highest/60">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container shadow-[0_0_8px_rgba(251,191,36,0.6)]"></span>
+<span class="font-label-sm text-label-sm text-primary">کتاب درسی رسمی • پایه هشتم متوسطه اول</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span>شماره درس:</span>
+<span class="font-headline-sm text-primary-container">۴</span>
+</div>
+</div>
+<!-- Lesson Banner & Calligraphic Title Frame -->
+<div class="relative bg-gradient-to-l from-surface-container-high via-surface-container to-surface-container-high border border-outline-variant/40 p-4 rounded-2xl text-center overflow-hidden">
+<div class="relative z-10 flex flex-col items-center">
+<span class="font-label-md text-label-md text-primary-fixed-dim mb-1">فصل دوم: صورت و معنا</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-extrabold tracking-tight">درس چهارم: ارمغان ایران</h2>
+<div class="w-16 h-1 bg-primary-container rounded-full mt-1.5 shadow-[0_0_10px_rgba(251,191,36,0.4)]"></div>
+</div>
+</div>
+<!-- Rich Textbook Visual Illustration Placeholder with Dark Mode Filter Framing -->
+<div class="w-full rounded-2xl overflow-hidden shadow-md relative group border border-outline-variant/30">
+<img class="w-full h-40 object-cover rounded-2xl transform transition-transform group-hover:scale-105 duration-700 brightness-90 contrast-105" data-alt="A delicate and vibrant Persian miniature inspired vector painting depicting ancient Iranian heritage, a mythical Simurgh bird in flight above turquoise domed historical Persian towers, lush cypress trees and golden calligraphy scrolls under soft sunbeams, educational and inspiring aesthetic for middle schoolers." src="assets/img/3895aa987f69.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 via-transparent to-transparent pointer-events-none"></div>
+<div class="absolute bottom-2 right-2 bg-surface-container-lowest/85 backdrop-blur-md text-primary-fixed px-2.5 py-1 rounded-lg font-label-sm text-label-sm flex items-center gap-1.5 border border-primary/20">
+<span class="material-symbols-outlined text-[14px] text-primary">palette</span>
+<span>ایران، سرزمین فرزانگی و تمدن کهن</span>
+</div>
+</div>
+<!-- Interactive Textbook Verses & Paragraphs -->
+<div class="flex flex-col gap-3 leading-relaxed text-justify">
+<p class="font-body-md text-body-md text-on-surface text-justify leading-7">
+            ایران، این بومِ کهنسال، مهد آزادگان، چشمه‌سار دانش و ادب، و خاستگاه فرزانگانِ نام‌آور در درازنای تاریخ جهان بوده است. مردمانِ این کهن‌دیار، همواره با دین‌باوری، دانش‌اندوزی، و جوانمردی، گزندِ اهریمنانِ بدخواه را بی‌پاسخ نگذاشته‌اند.
+          </p>
+<!-- Interactive Verse Block 1 (Click to reveal meaning & grammar) -->
+<div class="bg-surface-container border border-surface-container-highest hover:border-primary/40 transition-all cursor-pointer p-3.5 rounded-2xl flex flex-col gap-2 shadow-sm" onclick="toggleVerseCard('verse1')">
+<div class="flex items-center justify-between">
+<span class="bg-primary-container text-on-primary-container px-2.5 py-0.5 rounded-full font-label-sm text-label-sm flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[13px]">touch_app</span>
+<span>بیت اول (شعر شاهنامه)</span>
+</span>
+<span class="material-symbols-outlined text-primary-fixed-dim text-[20px] transition-transform duration-300" id="verse1Icon">expand_more</span>
+</div>
+<!-- Hemistichs with Calligraphic Framing -->
+<div class="grid grid-cols-1 gap-2 pt-1 font-body-lg text-body-lg text-on-surface text-center font-bold">
+<div class="bg-surface-container-low border border-surface-container-highest/60 p-2.5 rounded-xl shadow-inner text-primary-fixed hover:text-primary transition-colors">
+                «دریغ است ایران که ویران شود»
+              </div>
+<div class="bg-surface-container-low border border-surface-container-highest/60 p-2.5 rounded-xl shadow-inner text-primary-fixed hover:text-primary transition-colors">
+                «کنامِ پلنگان و شیران شود»
+              </div>
+</div>
+<!-- Verse Details Accordion Container -->
+<div class="hidden flex-col gap-2 pt-2 border-t border-outline-variant/40 text-right" id="verse1Details">
+<div class="p-2.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl flex items-start gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim text-[18px] shrink-0 mt-0.5">menu_book</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary block">معنی روان و مفهوم:</span>
+<span class="font-body-sm text-body-sm text-on-surface">بسیار جای افسوس و اندوه است اگر میهن ما ویران گردد و به جایگاه درندگان و دشمنان خونخوار مبدل شود.</span>
+</div>
+</div>
+<div class="p-2.5 bg-secondary-container/40 border border-secondary/30 rounded-xl flex items-start gap-2 text-on-secondary-container">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">stars</span>
+<div>
+<span class="font-label-sm text-label-sm text-secondary block">نکات آرایه‌ای و دستوری:</span>
+<span class="font-body-sm text-body-sm text-on-surface">
+<strong class="text-secondary">ویران و شیران:</strong> قافیه شعر / <strong class="text-secondary">پلنگان و شیران:</strong> استعاره از دشمنان بی‌رحم / <strong class="text-secondary">«کنام»:</strong> آشیانه درندگان.
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Highlightable Interactive Vocabulary Cloud -->
+<div class="p-3 bg-surface-container border border-surface-container-highest rounded-2xl flex flex-col gap-2 transition-all" id="vocabLayer">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-primary">
+<span class="material-symbols-outlined text-[18px]">dictionary</span>
+<span>واژگان کلیدی درس (کلیک برای آزمون سریع)</span>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="cursor-pointer px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/40 hover:bg-primary-container hover:text-on-primary-container hover:border-primary-container transition-all rounded-lg font-label-md text-label-md text-on-surface shadow-sm" onclick="speakWord('ارمغان')">
+                ارمغان: هدیه، سوغات
+              </span>
+<span class="cursor-pointer px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/40 hover:bg-primary-container hover:text-on-primary-container hover:border-primary-container transition-all rounded-lg font-label-md text-label-md text-on-surface shadow-sm" onclick="speakWord('فرزانگی')">
+                فرزانگی: دانایی و خردمندی
+              </span>
+<span class="cursor-pointer px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/40 hover:bg-primary-container hover:text-on-primary-container hover:border-primary-container transition-all rounded-lg font-label-md text-label-md text-on-surface shadow-sm" onclick="speakWord('درازنا')">
+                درازنا: طول مدت زمان
+              </span>
+<span class="cursor-pointer px-2.5 py-1 bg-surface-container-lowest border border-outline-variant/40 hover:bg-primary-container hover:text-on-primary-container hover:border-primary-container transition-all rounded-lg font-label-md text-label-md text-on-surface shadow-sm" onclick="speakWord('گزند')">
+                گزند: آسیب و زیان
+              </span>
+</div>
+</div>
+</div>
+<!-- Page Footer Number -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm">
+<span>کتاب فارسی هشتم • درس ۴</span>
+<span class="font-headline-sm text-primary">صفحه ۳۸</span>
+</div>
+</div>
+<!-- PAGE CONTENT 2 (Hidden View: خودارزیابی و دانش‌های زبانی صفحه ۳۹) -->
+<div class="hidden flex-col gap-space-md relative z-10" id="contentPage2">
+<!-- Page 39 Header -->
+<div class="flex items-center justify-between pb-3 bg-surface-container px-3.5 py-2.5 rounded-2xl border border-surface-container-highest/60">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary shadow-[0_0_8px_rgba(189,194,255,0.6)]"></span>
+<span class="font-label-sm text-label-sm text-secondary">بخش ارزشیابی و فعالیت‌های کلاسی</span>
+</div>
+<div class="flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant">
+<span>شماره صفحه:</span>
+<span class="font-headline-sm text-secondary">۳۹</span>
+</div>
+</div>
+<!-- Section 1: خودارزیابی رسمی کتاب درسی -->
+<div class="bg-surface-container border border-surface-container-highest p-4 rounded-2xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-primary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-primary-container text-[24px]">assignment_turned_in</span>
+<span>خودارزیابی (صفحه ۳۹)</span>
+</div>
+<!-- Question 1 with Toggle Answer -->
+<div class="bg-surface-container-low border border-surface-container-highest/60 p-3 rounded-xl flex flex-col gap-2 shadow-sm">
+<div class="font-label-md text-label-md text-on-surface flex items-start gap-1.5">
+<span class="bg-primary-container text-on-primary-container font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px] mt-0.5">۱</span>
+<span>چرا ایرانیان همواره فرهنگ و اندیشه خود را حفظ کرده‌اند؟</span>
+</div>
+<button class="text-right text-primary-fixed font-label-sm text-label-sm hover:underline flex items-center gap-1" onclick="toggleExercise('ans1')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>مشاهده پاسخ پیشنهادی دانا</span>
+</button>
+<div class="hidden p-2.5 bg-surface-container-lowest border border-outline-variant/30 rounded-lg font-body-sm text-body-sm text-on-surface leading-6" id="ans1">
+              به دلیل اتکا به ریشه‌های اصیل دینی، عشق به آموختن، میهن‌دوستی، و پیوند ناگسستنی با زبان و ادب کهن فارسی که هویت ملی را زنده نگاه داشته است.
+            </div>
+</div>
+<!-- Question 2 with Toggle Answer -->
+<div class="bg-surface-container-low border border-surface-container-highest/60 p-3 rounded-xl flex flex-col gap-2 shadow-sm">
+<div class="font-label-md text-label-md text-on-surface flex items-start gap-1.5">
+<span class="bg-primary-container text-on-primary-container font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-[11px] mt-0.5">۲</span>
+<span>وظیفه نوجوانان امروز در قبال ارمغان ایران چیست؟</span>
+</div>
+<button class="text-right text-primary-fixed font-label-sm text-label-sm hover:underline flex items-center gap-1" onclick="toggleExercise('ans2')">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span>مشاهده پاسخ پیشنهادی دانا</span>
+</button>
+<div class="hidden p-2.5 bg-surface-container-lowest border border-outline-variant/30 rounded-lg font-body-sm text-body-sm text-on-surface leading-6" id="ans2">
+              پاسداری از استقلال کشور، مجاهدت در عرصه‌های نوین علمی، پاسداشت پاکیزگی زبان فارسی و ارتقای اخلاق و همدلی اجتماعی.
+            </div>
+</div>
+</div>
+<!-- Section 2: دانش‌های زبانی (مسند و فعل ربطی/اسنادی) -->
+<div class="bg-secondary-container/25 border border-secondary/30 p-4 rounded-2xl flex flex-col gap-3">
+<div class="flex items-center gap-2 text-secondary font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-[24px]">school</span>
+<span>دانش‌های زبانی: مَسند و فعل‌های اسنادی</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-6">
+            جمله‌هایی که دارای فعل‌های <strong class="text-primary">«است، بود، شد، گشت، گردید»</strong> هستند، جمله اسنادی نامیده می‌شوند. در این جمله‌ها حالتی به نهاد نسبت داده می‌شود که به آن <strong class="text-secondary font-bold">«مَسند»</strong> می‌گوییم.
+          </p>
+<!-- Interactive Grammar Formula Widget -->
+<div class="bg-surface-container-lowest border border-surface-container-highest p-3 rounded-xl flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">الگوی جمله اسنادی:</span>
+<div class="flex items-center justify-center gap-2 bg-surface-container p-2 rounded-lg font-label-md text-label-md text-center">
+<span class="text-primary font-bold">نهاد</span>
+<span class="text-on-surface-variant">+</span>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded font-bold">مَسند</span>
+<span class="text-on-surface-variant">+</span>
+<span class="text-error font-bold">فعل اسنادی</span>
+</div>
+<!-- Example sentence breakdown -->
+<div class="bg-surface-container-low p-2 rounded-lg text-center font-body-sm text-body-sm">
+              مثال: «ایران، <span class="bg-secondary-container text-on-secondary-container px-1 rounded font-bold">سرافراز</span> است.»
+              <span class="block text-on-surface-variant text-label-sm pt-1">(سرافراز = مسند / است = فعل اسنادی)</span>
+</div>
+</div>
+</div>
+<!-- Section 3: کارگاه خوش‌نویسی کتیبه‌ای -->
+<div class="bg-surface-container border border-surface-container-highest p-3.5 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">draw</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">کارگاه خوش‌نویسی</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تحریر عبارت «چو ایران نباشد تن من مباد»</span>
+</div>
+</div>
+<button class="px-3.5 py-1.5 bg-primary-container text-on-primary-container rounded-xl font-label-sm text-label-sm font-bold shadow-md active:scale-95 transition-all" onclick="alert('کارگاه تمرین قلم خط نستعلیق فعال گردید.')">
+            تمرین قلم
+          </button>
+</div>
+<!-- Page Footer Number -->
+<div class="flex items-center justify-between pt-2 border-t border-outline-variant/30 text-on-surface-variant font-label-sm text-label-sm">
+<span>کتاب فارسی هشتم • درس ۴</span>
+<span class="font-headline-sm text-secondary">صفحه ۳۹</span>
+</div>
+</div>
+<!-- Bottom Interactive Dog-Ear Indicator -->
+<div class="dog-ear-curl absolute bottom-0 left-0 w-12 h-12 cursor-pointer z-30 group" onclick="togglePageFlip()" title="ورق زدن صفحه">
+<svg class="w-full h-full text-surface-container-high drop-shadow-md" fill="none" viewbox="0 0 48 48">
+<path d="M0 48 L48 48 L0 0 Z" fill="currentColor"></path>
+<path d="M48 48 L0 0 L14 34 Z" fill="rgba(189, 194, 255, 0.25)"></path>
+</svg>
+<span class="material-symbols-outlined absolute bottom-1 left-1 text-[14px] text-secondary group-hover:-rotate-45 transition-transform">menu_book</span>
+</div>
+</div>
+</div>
+<!-- Dana Floating AI Companion Widget (Moments of Delight in Night Mode) -->
+<div class="px-margin my-2">
+<div class="relative bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-low border border-outline-variant/40 p-4 rounded-3xl shadow-xl overflow-hidden flex items-center justify-between">
+<!-- AI Avatar with Floating Keyframe & Pulse Ring -->
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-12 h-12 rounded-full bg-primary-container/20 animate-ping"></div>
+<div class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary-container flex items-center justify-center animate-float-dana shadow-lg z-10">
+<span class="material-symbols-outlined text-[26px]">smart_toy</span>
+</div>
+</div>
+<div class="flex flex-col text-right">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-primary">دستیار هوشمند دانا</span>
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_6px_rgba(251,191,36,0.8)]"></span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant max-w-[210px] leading-5" id="danaMessage">
+            آماده پاسخ به سوالات وزن، قافیه، آرایه‌ها و مفهوم درس ارمغان ایران هستم!
+          </span>
+</div>
+</div>
+<!-- Quick Action Prompt Pill Button -->
+<button class="h-10 px-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl font-label-md text-label-md flex items-center gap-1 shadow-md hover:brightness-110 active:scale-95 transition-all shrink-0" onclick="askDanaQuestion()">
+<span class="material-symbols-outlined text-[18px]">chat_spark</span>
+<span>پرسش سریع</span>
+</button>
+</div>
+</div>
+<!-- Bottom Page Navigation Controller (Turn Page & Progress) -->
+<div class="px-margin mt-2 flex flex-col gap-2">
+<div class="bg-surface-container-low border border-surface-container-highest/60 p-3 rounded-2xl shadow-lg flex items-center justify-between">
+<!-- Prev Button (Persian RTL: Next page goes forward in book) -->
+<button class="flex items-center gap-1 px-4 py-2.5 rounded-xl bg-surface-container border border-surface-container-highest text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-high hover:text-on-surface active:scale-95 transition-all" id="prevBtn" onclick="flipToPage(1)">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+<span>صفحه قبل</span>
+</button>
+<!-- Interactive Progress Bar and Counter -->
+<div class="flex flex-col items-center gap-1">
+<div class="flex items-center gap-1.5 font-headline-sm text-headline-sm text-primary">
+<span id="currPageNum">۳۸</span>
+<span class="text-on-surface-variant text-body-sm">از ۱۴۰</span>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-24 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-l from-primary-container to-secondary rounded-full transition-all duration-500 shadow-[0_0_8px_rgba(251,191,36,0.4)]" id="bookProgressBar" style="width: 27%;"></div>
+</div>
+</div>
+<!-- Next Button -->
+<button class="flex items-center gap-1 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary-container font-bold font-label-md text-label-md hover:brightness-110 active:scale-95 transition-all shadow-md" id="nextBtn" onclick="flipToPage(2)">
+<span>صفحه بعد</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  let currentPage = 1;
+  let isAudioPlaying = false;
+
+  function flipToPage(pageNum) {
+    if (currentPage === pageNum) return;
+    const card = document.getElementById('pageCard');
+    const p1 = document.getElementById('contentPage1');
+    const p2 = document.getElementById('contentPage2');
+    const currNumLabel = document.getElementById('currPageNum');
+    const progBar = document.getElementById('bookProgressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const danaMessage = document.getElementById('danaMessage');
+
+    if (pageNum === 2) {
+      card.classList.add('turning-next');
+      setTimeout(() => {
+        p1.classList.add('hidden');
+        p2.classList.remove('hidden');
+        p2.classList.add('fade-in-up-card');
+        card.classList.remove('turning-next');
+        currentPage = 2;
+        currNumLabel.textContent = '۳۹';
+        progBar.style.width = '28%';
+        danaMessage.textContent = 'در صفحه ۳۹ با مفهوم مسند و حل سوالات خودارزیابی همراهت هستم!';
+        
+        // Button style swap
+        nextBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+        nextBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+        prevBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        prevBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+      }, 250);
+    } else {
+      card.classList.add('turning-prev');
+      setTimeout(() => {
+        p2.classList.add('hidden');
+        p1.classList.remove('hidden');
+        p1.classList.add('fade-in-up-card');
+        card.classList.remove('turning-prev');
+        currentPage = 1;
+        currNumLabel.textContent = '۳۸';
+        progBar.style.width = '27%';
+        danaMessage.textContent = 'آماده پاسخ به سوالات وزن، قافیه، آرایه‌ها و مفهوم درس ارمغان ایران هستم!';
+
+        // Button style swap
+        prevBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'font-bold');
+        prevBtn.classList.add('bg-surface-container', 'text-on-surface-variant');
+        nextBtn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+        nextBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'font-bold');
+      }, 250);
+    }
+  }
+
+  function togglePageFlip() {
+    flipToPage(currentPage === 1 ? 2 : 1);
+  }
+
+  function toggleVerseCard(id) {
+    const details = document.getElementById(id + 'Details');
+    const icon = document.getElementById(id + 'Icon');
+    if (details.classList.contains('hidden')) {
+      details.classList.remove('hidden');
+      details.classList.add('flex');
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      details.classList.add('hidden');
+      details.classList.remove('flex');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+
+  function toggleExercise(ansId) {
+    const ans = document.getElementById(ansId);
+    ans.classList.toggle('hidden');
+  }
+
+  function toggleAnnotation(layer) {
+    const danaMessage = document.getElementById('danaMessage');
+    const vocabLayer = document.getElementById('vocabLayer');
+
+    if (layer === 'vocab') {
+      vocabLayer.classList.toggle('ring-2');
+      vocabLayer.classList.toggle('ring-primary-container');
+      danaMessage.textContent = 'واژه‌نامه فعال شد. روی هر واژه ضربه بزنید تا تلفظ و معنی تکمیلی را بشنوید.';
+    } else if (layer === 'rhetoric') {
+      const verseDetails = document.getElementById('verse1Details');
+      const icon = document.getElementById('verse1Icon');
+      verseDetails.classList.remove('hidden');
+      verseDetails.classList.add('flex');
+      icon.style.transform = 'rotate(180deg)';
+      danaMessage.textContent = 'تحلیل آرایه‌ها و نقش‌های دستوری برای ابیات درس هایلایت شد.';
+    }
+  }
+
+  function toggleAudioPlayback() {
+    const icon = document.getElementById('audioIcon');
+    const text = document.getElementById('audioStatusText');
+    const danaMessage = document.getElementById('danaMessage');
+    isAudioPlaying = !isAudioPlaying;
+
+    if (isAudioPlaying) {
+      icon.textContent = 'pause_circle';
+      icon.classList.add('text-primary-container');
+      text.textContent = 'در حال خوانش...';
+      danaMessage.textContent = 'در حال پخش لحن حماسی و شورانگیز خوانش متن درس ارمغان ایران 🎵';
+    } else {
+      icon.textContent = 'volume_up';
+      icon.classList.remove('text-primary-container');
+      text.textContent = 'صوت گویندگی';
+      danaMessage.textContent = 'پخش صوت متوقف شد. هر زمان خواستید دوباره گوش دهید.';
+    }
+  }
+
+  function speakWord(word) {
+    const danaMessage = document.getElementById('danaMessage');
+    danaMessage.textContent = `واژه «${word}» بررسی شد: با ریشه کهن و تلفظ استاندارد کتاب درسی.`;
+  }
+
+  function askDanaQuestion() {
+    const danaMessage = document.getElementById('danaMessage');
+    const prompts = [
+      'نکته طلایی: «چو ایران نباشد تن من مباد» از شاهنامه فردوسی است و پیوند ملی-میهنی دارد.',
+      'یادآوری: مسند معمولاً به سوال «چگونه است؟» یا «چیست؟» درباره نهاد پاسخ می‌دهد.',
+      'آفرین بر همتت! ۲۵ امتیاز بابت تحلیل ابیات درس ۴ دریافت کردی.'
+    ];
+    const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+    danaMessage.textContent = randomPrompt;
+  }
+</script></main>
+<script>
+(function(){
+  var N=18, ME=17;
+  function fa(x){var d='۰۱۲۳۴۵۶۷۸۹';return String(x).replace(/\d/g,function(c){return d[+c];});}
+  try{
+    var d=document.createElement('div');
+    d.id='darsyar-nav';
+    d.style.cssText="position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:10px;z-index:2147483000;display:flex;align-items:center;gap:2px;direction:ltr;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.9);border-radius:9999px;padding:4px 6px;box-shadow:0 10px 30px rgba(15,23,42,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.97;transition:opacity .2s;";
+    function mk(svg,href,label,extra){
+      var a=document.createElement('a');
+      a.setAttribute('aria-label',label); a.title=label;
+      a.style.cssText="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9999px;background:transparent;color:#475569;text-decoration:none;cursor:pointer;transition:background .15s,color .15s;";
+      a.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+svg+'</svg>';
+      if(href){a.href=href;}else{a.style.opacity='.32';a.style.pointerEvents='none';}
+      a.addEventListener('mouseenter',function(){a.style.background='#EEF2FF';a.style.color='#4F46E5';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';a.style.color='#475569';});
+      Object.assign(a.style,extra||{});
+      return a;
+    }
+    var HOME='<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>';
+    var ARR_L='<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>';
+    var ARR_R='<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>';
+    if(localStorage.getItem('darsyarNavHidden')==='1'){d.style.display='none';}
+    d.appendChild(mk(ARR_R, ME>1?('s'+(ME-1)+'.html'):null, 'صفحه قبلی'));
+    var home=mk(HOME,'index.html','فهرست صفحات');
+    home.style.background='#4F46E5'; home.style.color='#fff';
+    home.addEventListener('mouseenter',function(){home.style.background='#4338CA';});
+    home.addEventListener('mouseleave',function(){home.style.background='#4F46E5';});
+    d.appendChild(home);
+    var c=document.createElement('span');
+    c.style.cssText="font-family:Vazirmatn,sans-serif;font-size:11px;font-weight:700;color:#475569;direction:rtl;padding:0 6px;white-space:nowrap;user-select:none;";
+    c.textContent=fa(ME)+' / '+fa(N);
+    d.appendChild(c);
+    d.appendChild(mk(ARR_L, ME<N?('s'+(ME+1)+'.html'):null, 'صفحه بعدی'));
+    document.body.appendChild(d);
+    // swipe navigation (skips horizontal scrollers/carousels)
+    var x0=0,y0=0,t0=0,ok=false;
+    document.addEventListener('touchstart',function(e){
+      if(e.touches.length!==1)return;
+      var t=e.target,el=t;
+      while(el&&el!==document){
+        if(el.scrollWidth>el.clientWidth+8&&el.clientWidth>0){var ox=getComputedStyle(el).overflowX;if(ox==='auto'||ox==='scroll'||ox==='overlay'){ok=false;return;}}
+        el=el.parentElement;
+      }
+      x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();ok=true;
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      if(!ok||e.changedTouches.length!==1)return;
+      var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+      if(Math.abs(dx)>75&&Math.abs(dx)>1.7*Math.abs(dy)&&Date.now()-t0<800){
+        if(dx<0&&ME<N)location.href='s'+(ME+1)+'.html';
+        else if(dx>0&&ME>1)location.href='s'+(ME-1)+'.html';
+      }
+      ok=false;
+    },{passive:true});
+  }catch(err){}
+})();
+</script>
+</body></html>

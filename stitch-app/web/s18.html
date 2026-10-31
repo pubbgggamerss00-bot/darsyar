@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="fa"><head><title>نکته طلایی (۲)</title><link href="assets/fonts.css" rel="stylesheet"/><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/>
+<style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* 60fps GPU Hardware accelerated keyframe animations */
+@keyframes floatDana {
+  0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 12px rgba(251, 191, 36, 0.35)); }
+  50% { transform: translateY(-5px); filter: drop-shadow(0 10px 22px rgba(251, 191, 36, 0.55)); }
+}
+@keyframes pulseRadar {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes shimmerWave {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float-dana {
+  animation: floatDana 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-shimmer {
+  animation: shimmerWave 2.2s infinite linear;
+}
+.fade-in-up-card {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.book-perspective-wrapper {
+  perspective: 1200px;
+}
+.page-spread-card {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
+  will-change: transform, box-shadow;
+}
+.page-spread-card.turning-next {
+  transform: rotateY(-7deg) scale(0.985) translateX(-8px);
+  box-shadow: 12px 16px 36px rgba(0, 0, 0, 0.5);
+}
+.page-spread-card.turning-prev {
+  transform: rotateY(7deg) scale(0.985) translateX(8px);
+  box-shadow: -12px 16px 36px rgba(0, 0, 0, 0.5);
+}
+.dog-ear-curl {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.dog-ear-curl:hover, .dog-ear-curl:active {
+  transform: scale(1.22) translate(1px, -1px);
+}
+</style><script src="assets/tailwind-forms-cq.js"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-bright": "#31394d",
+          "secondary-container": "#2f3aa3",
+          "on-tertiary-container": "#005a7b",
+          "secondary-fixed-dim": "#bdc2ff",
+          "on-primary-fixed-variant": "#5c4300",
+          "inverse-surface": "#dae2fd",
+          "on-primary-container": "#6c4f00",
+          "tertiary-fixed": "#c4e7ff",
+          "on-primary-fixed": "#261a00",
+          "tertiary-fixed-dim": "#7bd0ff",
+          "primary-container": "#fbbf24",
+          "surface-tint": "#f9bd22",
+          "secondary-fixed": "#e0e0ff",
+          "on-secondary-fixed": "#000767",
+          "on-primary": "#402d00",
+          "inverse-primary": "#795900",
+          "on-surface-variant": "#d3c5ac",
+          "surface-dim": "#0b1326",
+          "on-tertiary": "#00354a",
+          "primary-fixed": "#ffdf9f",
+          "inverse-on-surface": "#283044",
+          "on-error-container": "#ffdad6",
+          "surface": "#0b1326",
+          "on-background": "#dae2fd",
+          "on-secondary-fixed-variant": "#2f3aa3",
+          "error-container": "#93000a",
+          "on-tertiary-fixed": "#001e2c",
+          "primary": "#ffe1a7",
+          "tertiary": "#c8e9ff",
+          "surface-container-lowest": "#060e20",
+          "secondary": "#bdc2ff",
+          "on-secondary": "#131e8c",
+          "tertiary-container": "#82d2ff",
+          "outline-variant": "#4f4633",
+          "surface-container-low": "#131b2e",
+          "outline": "#9c8f79",
+          "on-error": "#690005",
+          "error": "#ffb4ab",
+          "surface-container-high": "#222a3d",
+          "surface-container": "#171f33",
+          "on-secondary-container": "#a8afff",
+          "on-surface": "#dae2fd",
+          "surface-variant": "#2d3449",
+          "background": "#0b1326",
+          "surface-container-highest": "#2d3449",
+          "on-tertiary-fixed-variant": "#004c69",
+          "primary-fixed-dim": "#f9bd22"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-sm": "0.5rem",
+          "margin": "1rem",
+          "margin-tablet": "1.5rem",
+          "gutter-desktop": "1.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin-desktop": "2.5rem",
+          "space-xl": "2rem",
+          "gutter": "1rem",
+          "space-md": "1rem",
+          "space-2xl": "3rem"
+        },
+        "fontFamily": {
+          "label-md": ["Vazirmatn"],
+          "body-md": ["Vazirmatn"],
+          "display": ["Vazirmatn"],
+          "headline-sm": ["Vazirmatn"],
+          "display-mobile": ["Vazirmatn"],
+          "body-sm": ["Vazirmatn"],
+          "label-sm": ["Vazirmatn"],
+          "headline-lg-mobile": ["Vazirmatn"],
+          "headline-lg": ["Vazirmatn"],
+          "body-lg": ["Vazirmatn"],
+          "headline-md": ["Vazirmatn"],
+          "label-lg": ["Vazirmatn"]
+        },
+        "fontSize": {
+          "label-md": ["13px", { "lineHeight": "20px", "fontWeight": "600" }],
+          "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "display": ["36px", { "lineHeight": "52px", "fontWeight": "800" }],
+          "headline-sm": ["17px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "display-mobile": ["28px", { "lineHeight": "40px", "fontWeight": "800" }],
+          "body-sm": ["12px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "label-sm": ["11px", { "lineHeight": "16px", "fontWeight": "700" }],
+          "headline-lg-mobile": ["22px", { "lineHeight": "34px", "fontWeight": "700" }],
+          "headline-lg": ["28px", { "lineHeight": "42px", "fontWeight": "700" }],
+          "body-lg": ["16px", { "lineHeight": "28px", "fontWeight": "500" }],
+          "headline-md": ["20px", { "lineHeight": "32px", "fontWeight": "700" }],
+          "label-lg": ["15px", { "lineHeight": "24px", "fontWeight": "700" }]
+        }
+      }
+    }
+  }
+</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-background font-body-md text-on-surface flex flex-col min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="بازگشت به فهرست کتاب" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-all active:scale-90" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><div class="flex flex-col text-right"><div class="flex items-center gap-2"><h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight truncate max-w-[150px]">Interactive Textbook Reader</h1><span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-primary-container/20 border border-primary-container/40 text-primary-fixed text-[11px] font-medium"><span class="material-symbols-outlined text-[12px] text-primary-container" style="font-variation-settings: 'FILL' 1;">dark_mode</span><span>شب</span></span></div><span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary-container">menu_book</span>فصل سوم: چندضلعی‌ها و تقارن</span></div></div><div class="flex items-center gap-1"><button aria-label="حالت مطالعه در شب فعال است" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-container bg-surface-container-high border border-outline-variant/40 shadow-inner"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">nightlight_round</span></button><button aria-label="روخوانی هوشمند صوتی" class="w-10 h-10 rounded-full flex items-center justify-center text-primary-fixed bg-surface-container-low hover:bg-surface-container transition-all active:scale-90"><span class="material-symbols-outlined text-[21px]">record_voice_over</span></button><button aria-label="نشان‌گذاری صفحه" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-[21px]">bookmark_border</span></button><div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center mr-1 shadow-[0_0_12px_rgba(251,191,36,0.35)] transition-transform active:scale-95"><span class="material-symbols-outlined text-on-primary-container text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full pb-safe">
+<!-- Interactive Top Action & Gamification Banner -->
+<section class="px-margin pt-space-md pb-space-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between bg-surface-container-low border border-outline-variant/30 rounded-3xl p-3 shadow-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-2xl bg-secondary-container/60 border border-secondary/30 text-secondary-fixed flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-[22px]">science</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">پایه هشتم دوره اول متوسطه</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">فصل ۲: تغییرهای شیمیایی</span>
+</div>
+</div>
+<!-- Streak & XP Gamification Badge -->
+<div class="flex items-center gap-1.5 bg-surface-container-high border border-primary-container/40 text-primary-fixed px-3 py-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary-container fill-current" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-md text-label-md">۳۵۰ امتیاز مطالعه</span>
+</div>
+</div>
+<!-- Smart Filter & Layer Overlay Switchers -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 -mx-margin px-margin no-scrollbar">
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-primary-container text-on-primary-container font-label-md text-label-md shadow-[0_2px_12px_rgba(251,191,36,0.3)] transition-all active:scale-95" id="toggle-answers-btn">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>پاسخ آزمایش‌ها و فکر کنید</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-surface-container-high border border-outline-variant/30 text-on-surface font-label-md text-label-md transition-all active:scale-95 hover:bg-surface-variant" id="toggle-notes-btn">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed">history_edu</span>
+<span>یادداشت‌ها و هایلایت</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl bg-surface-container-high border border-outline-variant/30 text-on-surface font-label-md text-label-md transition-all active:scale-95 hover:bg-surface-variant" id="toggle-lab-btn">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">smart_display</span>
+<span>آزمایشگاه واقعیت افزوده</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-1 px-3 py-2 rounded-2xl bg-surface-container-low border border-outline-variant/30 text-primary-fixed font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>تنظیمات فونت</span>
+</button>
+</div>
+</section>
+<!-- 3D Realistic Page-Spread Viewport -->
+<div class="px-margin py-space-xs book-perspective-wrapper">
+<div class="page-spread-card relative rounded-3xl bg-surface-container-low border border-outline-variant/40 text-on-surface p-space-md shadow-[0_12px_36px_rgba(0,0,0,0.6)] overflow-hidden transition-all duration-500" id="textbook-spread">
+<!-- Realistic Book Spine Center Fold & Gradients -->
+<div class="absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/50 via-black/25 to-transparent pointer-events-none"></div>
+<div class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-black/50 to-transparent pointer-events-none"></div>
+<!-- Interactive Dog-Ear Bookmark Corner (Page Flip Indicator) -->
+<button aria-label="ورق زدن صفحه" class="dog-ear-curl absolute top-0 left-0 w-12 h-12 bg-gradient-to-br from-primary-container/80 via-surface-variant to-transparent rounded-br-2xl shadow-lg flex items-start justify-start p-1.5 cursor-pointer z-20 border-r border-b border-primary-container/30" id="corner-curl-action">
+<span class="material-symbols-outlined text-on-primary-container text-[18px] transform -rotate-45">auto_stories</span>
+</button>
+<!-- Official Textbook Header Banner -->
+<header class="flex items-center justify-between pb-3 mb-space-sm bg-surface-container/80 border border-outline-variant/25 rounded-2xl px-3 py-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border border-primary-container/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]">school</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">جمهوری اسلامی ایران - وزارت آموزش و پرورش</span>
+<span class="font-label-md text-label-md text-on-surface">کتاب درسی علوم تجربی پایه هشتم</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-high border border-outline-variant/30 px-2.5 py-1 rounded-xl">
+<span class="font-label-sm text-label-sm text-secondary-fixed">صفحه ۱۴ و ۱۵</span>
+</div>
+</header>
+<!-- Exam Golden Tip Banner (شب امتحان) -->
+<div class="mb-space-md rounded-2xl bg-surface-container-high/90 border border-primary-container/40 p-space-sm flex items-start gap-space-sm shadow-md">
+<div class="w-8 h-8 rounded-xl bg-primary-container text-on-primary-container flex-shrink-0 flex items-center justify-center shadow-[0_0_12px_rgba(251,191,36,0.3)]">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col">
+<h2 class="font-headline-sm text-headline-sm text-primary-fixed">نکته طلایی شب امتحان: نشانه‌های تغییر شیمیایی</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mt-1">
+            در تغییر شیمیایی، ماهیت ذره‌های ماده تغییر کرده و ماده جدیدی پدید می‌آید. مهم‌ترین نشانه‌ها: <strong class="text-primary-fixed font-semibold">تغییر رنگ</strong>، <strong class="text-primary-fixed font-semibold">تولید گاز (حباب)</strong>، <strong class="text-primary-fixed font-semibold">تغییر دما (آزاد شدن یا جذب گرما)</strong> و <strong class="text-primary-fixed font-semibold">تشکیل رسوب</strong> می‌باشند.
+          </p>
+</div>
+</div>
+<!-- Content Page 14: آزمایش کنید (سوختن قند و کاتالیزگر) -->
+<section class="mb-space-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-secondary-container text-secondary-fixed font-label-md text-label-md border border-secondary/30">آزمایش کنید</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">سوختن قند به کمک خاکستر سیگار یا چوب (کاتالیزگر)</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          یک حبه قند را روی شعله بگیرید؛ قند به سختی می‌سوزد و ذوب می‌شود. حال قند دیگری را به کمی خاکستر آغشته کنید و روی شعله بگیرید. مشاهده می‌کنید که قند به راحتی شعله‌ور می‌شود!
+        </p>
+<!-- Illustration & Apparatus Grid -->
+<div class="grid grid-cols-2 gap-space-sm my-2">
+<div class="flex flex-col bg-surface-container p-2.5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="relative overflow-hidden rounded-xl mb-2">
+<img class="w-full h-28 object-cover rounded-xl brightness-90 contrast-105" data-alt="A clean photorealistic chemistry textbook macro demonstration of a sugar cube held by laboratory metal tongs catching flame with glowing embers and gray ash catalyst, safe education laboratory background with soft warm studio lighting." src="assets/img/b56b5045897e.jpg"/>
+<div class="absolute inset-0 bg-primary-container/10 pointer-events-none mix-blend-overlay"></div>
+</div>
+<span class="font-label-sm text-label-sm text-center text-on-surface">سوختن آسان قند با خاکستر</span>
+</div>
+<div class="flex flex-col bg-surface-container p-2.5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="relative overflow-hidden rounded-xl mb-2">
+<img class="w-full h-28 object-cover rounded-xl brightness-90 contrast-105" data-alt="A clear educational laboratory glass beaker filled with sparkling water showing dynamic effervescent bubbles reacting with an effervescent vitamin tablet, soft cyan laboratory highlights, pristine scientific macro photograph." src="assets/img/2dc77fe235eb.jpg"/>
+<div class="absolute inset-0 bg-secondary-container/10 pointer-events-none mix-blend-overlay"></div>
+</div>
+<span class="font-label-sm text-label-sm text-center text-on-surface">تولید گاز در قرص جوشان</span>
+</div>
+</div>
+<!-- Interactive Dynamic Reveal Drawer: Answer Key -->
+<div class="rounded-2xl bg-surface-container border border-tertiary-fixed-dim/30 p-space-sm flex flex-col gap-1 transition-all" id="experiment-answer-box">
+<div class="flex items-center justify-between cursor-pointer" onclick="document.getElementById('exp-detail').classList.toggle('hidden')">
+<div class="flex items-center gap-2 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+<span class="font-label-md text-label-md font-semibold">پاسخ و نتیجه‌گیری آزمایش (کلیک کنید)</span>
+</div>
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[20px]">expand_more</span>
+</div>
+<div class="mt-2 font-body-sm text-body-sm text-tertiary leading-relaxed pt-2 border-t border-outline-variant/20" id="exp-detail">
+            خاکستر نقش <strong class="text-tertiary-fixed-dim">کاتالیزگر</strong> را دارد. کاتالیزگرها موادی هستند که سرعت واکنش شیمیایی را افزایش می‌دهند اما خود در پایان واکنش بدون تغییر شیمیایی باقی می‌مانند.
+          </div>
+</div>
+</section>
+<!-- Content Page 15: فکر کنید و مقایسه واکنش‌ها -->
+<section class="flex flex-col gap-space-sm mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-lg bg-surface-variant text-primary-fixed border border-outline-variant/40 font-label-md text-label-md">فکر کنید - صفحه ۱۵</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">مثلث آتش و خاموش کردن شمع</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          برای ادامه سوختن شمع به سه عامل سوخت، اکسیژن و گرما نیاز است (مثلث آتش). با قرار دادن یک بشر یا لیوان شیشه‌ای روی شمع روشن، شمع پس از چند ثانیه خاموش می‌شود. چرا؟
+        </p>
+<!-- Interactive Comparison Matrix: Endothermic vs Exothermic -->
+<div class="mt-2 rounded-2xl bg-surface-container border border-outline-variant/30 p-3 flex flex-col gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">جدول مقایسه‌ای واکنش‌های گرماگیر و گرماده</span>
+<div class="grid grid-cols-2 gap-2">
+<!-- Exothermic Card -->
+<div class="rounded-xl bg-surface-container-high/90 border border-error/30 p-2.5 flex flex-col gap-1 shadow-sm">
+<div class="flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-[18px]">local_fire_department</span>
+<span class="font-label-md text-label-md font-semibold">واکنش گرماده</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">واکنشی که با آزادسازی گرما به محیط همراه است.</p>
+<span class="font-label-sm text-label-sm text-primary-container mt-1">مثال: سوختن گاز شهری، تنفس</span>
+</div>
+<!-- Endothermic Card -->
+<div class="rounded-xl bg-surface-container-high/90 border border-secondary/30 p-2.5 flex flex-col gap-1 shadow-sm">
+<div class="flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">ac_unit</span>
+<span class="font-label-md text-label-md font-semibold">واکنش گرماگیر</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">واکنشی که برای انجام شدن نیاز به جذب گرما دارد.</p>
+<span class="font-label-sm text-label-sm text-secondary-fixed mt-1">مثال: پختن نان، فتوسنتز گیاه</span>
+</div>
+</div>
+</div>
+<!-- Student Interactive Highlight Mock -->
+<div class="rounded-2xl bg-surface-variant border border-primary-container/40 p-2.5 text-primary-fixed font-body-sm text-body-sm flex items-center justify-between shadow-sm" id="highlight-layer">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[18px]">brush</span>
+<span>یادداشت شخصی شما: کاتالیزگر در ساختار فراورده‌ها وارد نمی‌شود!</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-on-surface text-[16px] cursor-pointer">close</span>
+</div>
+</section>
+<!-- Bottom Stamp & Real Book Signature -->
+<footer class="pt-3 border-t border-outline-variant/30 flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>علوم تجربی - دوره اول متوسطه</span>
+<span class="text-on-surface-variant">صفحه ۱۴ و ۱۵ از ۱۵۸</span>
+</footer>
+</div>
+</div>
+<!-- Interactive Floating Dana AI Assistant (Voice / Text Lab Buddy) -->
+<div class="fixed bottom-24 right-5 z-40 flex items-center gap-2 group">
+<!-- Floating Radar Pulse Rings -->
+<div class="relative">
+<div class="absolute -inset-1.5 rounded-full bg-primary-container/30 animate-ping opacity-75"></div>
+<button aria-label="دستیار هوشمند آزمایشگاه دانا" class="animate-float-dana relative w-14 h-14 rounded-full bg-gradient-to-tr from-secondary-container via-surface-variant to-primary-container text-on-primary-container flex items-center justify-center shadow-[0_8px_24px_rgba(251,191,36,0.35)] border border-primary-container/40 active:scale-90 transition-transform" id="dana-assistant-bubble">
+<span class="material-symbols-outlined text-[28px] text-primary-fixed">psychology</span>
+</button>
+</div>
+<!-- Chat Prompt Tooltip Bubble -->
+<div class="bg-surface-container-high border border-outline-variant/40 text-on-surface px-3 py-2 rounded-2xl shadow-xl flex items-center gap-1.5 fade-in-up-card backdrop-blur-md" id="dana-speech-hint">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#fbbf24]"></span>
+<span class="font-label-md text-label-md text-primary-fixed">دانا: بپرس چرا قرص جوشان حباب می‌ده؟</span>
+</div>
+</div>
+<!-- Real Book-Flip Navigation Bottom Bar -->
+<nav aria-label="کنترل ورق زدن کتاب" class="sticky bottom-0 inset-x-0 bg-surface/95 backdrop-blur-md border-t border-outline-variant/30 px-margin py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.6)] flex flex-col gap-2 z-30">
+<!-- Shimmering Chapter Progress Track -->
+<div class="relative w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-l from-primary-container via-secondary to-primary-fixed rounded-full" style="width: 28%;"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+</div>
+<!-- Flip Control Action Row -->
+<div class="flex items-center justify-between">
+<!-- Next Page (RTL: Going right turns back, going left turns forward) -->
+<button class="h-12 px-5 rounded-2xl bg-primary-container text-on-primary-container font-headline-sm text-headline-sm flex items-center gap-2 shadow-[0_4px_16px_rgba(251,191,36,0.35)] transition-all active:translate-y-0.5 active:shadow-none hover:bg-surface-tint" id="btn-next-page">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+<span>صفحه بعد (۱۶-۱۷)</span>
+</button>
+<!-- Page Indicator Dial -->
+<div class="flex flex-col items-center">
+<span class="font-headline-sm text-headline-sm text-primary-fixed">۱۴ - ۱۵</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">از ۱۵۸ صفحه</span>
+</div>
+<!-- Previous Page -->
+<button class="h-12 px-5 rounded-2xl bg-surface-container-high border border-outline-variant/40 text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 transition-all active:scale-95 hover:bg-surface-variant" id="btn-prev-page">
+<span>صفحه قبل (۱۲-۱۳)</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+</nav>
+</div>
+<script>
+  (function() {
+    const spreadCard = document.getElementById('textbook-spread');
+    const cornerAction = document.getElementById('corner-curl-action');
+    const nextBtn = document.getElementById('btn-next-page');
+    const prevBtn = document.getElementById('btn-prev-page');
+    const answerBox = document.getElementById('experiment-answer-box');
+    const toggleAnswersBtn = document.getElementById('toggle-answers-btn');
+    const toggleNotesBtn = document.getElementById('toggle-notes-btn');
+    const highlightLayer = document.getElementById('highlight-layer');
+    const danaBubble = document.getElementById('dana-assistant-bubble');
+    const danaSpeech = document.getElementById('dana-speech-hint');
+
+    // 3D Realistic Page-flip trigger animation
+    function triggerPageTurn(direction) {
+      if (!spreadCard) return;
+      spreadCard.classList.remove('turning-next', 'turning-prev');
+      
+      // Force reflow
+      void spreadCard.offsetWidth;
+      
+      if (direction === 'next') {
+        spreadCard.classList.add('turning-next');
+      } else {
+        spreadCard.classList.add('turning-prev');
+      }
+
+      setTimeout(() => {
+        spreadCard.classList.remove('turning-next', 'turning-prev');
+      }, 480);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => triggerPageTurn('next'));
+    }
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => triggerPageTurn('prev'));
+    }
+    if (cornerAction) {
+      cornerAction.addEventListener('click', () => triggerPageTurn('next'));
+    }
+
+    // Toggle Answers overlay visibility
+    if (toggleAnswersBtn && answerBox) {
+      toggleAnswersBtn.addEventListener('click', () => {
+        const detail = document.getElementById('exp-detail');
+        if (detail) {
+          detail.classList.toggle('hidden');
+        }
+      });
+    }
+
+    // Toggle Notes & Highlights
+    if (toggleNotesBtn && highlightLayer) {
+      toggleNotesBtn.addEventListener('click', () => {
+        highlightLayer.classList.toggle('hidden');
+      });
+    }
+
+    // Dana AI Assistant Interaction
+    if (danaBubble && danaSpeech) {
+      danaBubble.addEventListener('click', () => {
+        const hints = [
+          'دانا: کاتالیزگرها انرژی فعال‌سازی واکنش رو کم می‌کنن!',
+          'دانا: گاز تولید شده در قرص جوشان کربن دی‌اکسید (CO2) است.',
+          'دانا: آیا می‌دونستی زنگ زدن آهن یک واکنش گرماده بسیار کُنده؟'
+        ];
+        const randomHint = hints[Math.floor(Math.random() * hints.length)];
+        danaSpeech.innerHTML = `<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#fbbf24]"></span><span class="font-label-md text-label-md text-primary-fixed">${randomHint}</span>`;
+      });
+    }
+  })();
+</script></main>
+<script>
+(function(){
+  var N=18, ME=18;
+  function fa(x){var d='۰۱۲۳۴۵۶۷۸۹';return String(x).replace(/\d/g,function(c){return d[+c];});}
+  try{
+    var d=document.createElement('div');
+    d.id='darsyar-nav';
+    d.style.cssText="position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:10px;z-index:2147483000;display:flex;align-items:center;gap:2px;direction:ltr;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.9);border-radius:9999px;padding:4px 6px;box-shadow:0 10px 30px rgba(15,23,42,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.97;transition:opacity .2s;";
+    function mk(svg,href,label,extra){
+      var a=document.createElement('a');
+      a.setAttribute('aria-label',label); a.title=label;
+      a.style.cssText="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9999px;background:transparent;color:#475569;text-decoration:none;cursor:pointer;transition:background .15s,color .15s;";
+      a.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+svg+'</svg>';
+      if(href){a.href=href;}else{a.style.opacity='.32';a.style.pointerEvents='none';}
+      a.addEventListener('mouseenter',function(){a.style.background='#EEF2FF';a.style.color='#4F46E5';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';a.style.color='#475569';});
+      Object.assign(a.style,extra||{});
+      return a;
+    }
+    var HOME='<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>';
+    var ARR_L='<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>';
+    var ARR_R='<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>';
+    if(localStorage.getItem('darsyarNavHidden')==='1'){d.style.display='none';}
+    d.appendChild(mk(ARR_R, ME>1?('s'+(ME-1)+'.html'):null, 'صفحه قبلی'));
+    var home=mk(HOME,'index.html','فهرست صفحات');
+    home.style.background='#4F46E5'; home.style.color='#fff';
+    home.addEventListener('mouseenter',function(){home.style.background='#4338CA';});
+    home.addEventListener('mouseleave',function(){home.style.background='#4F46E5';});
+    d.appendChild(home);
+    var c=document.createElement('span');
+    c.style.cssText="font-family:Vazirmatn,sans-serif;font-size:11px;font-weight:700;color:#475569;direction:rtl;padding:0 6px;white-space:nowrap;user-select:none;";
+    c.textContent=fa(ME)+' / '+fa(N);
+    d.appendChild(c);
+    d.appendChild(mk(ARR_L, ME<N?('s'+(ME+1)+'.html'):null, 'صفحه بعدی'));
+    document.body.appendChild(d);
+    // swipe navigation (skips horizontal scrollers/carousels)
+    var x0=0,y0=0,t0=0,ok=false;
+    document.addEventListener('touchstart',function(e){
+      if(e.touches.length!==1)return;
+      var t=e.target,el=t;
+      while(el&&el!==document){
+        if(el.scrollWidth>el.clientWidth+8&&el.clientWidth>0){var ox=getComputedStyle(el).overflowX;if(ox==='auto'||ox==='scroll'||ox==='overlay'){ok=false;return;}}
+        el=el.parentElement;
+      }
+      x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();ok=true;
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      if(!ok||e.changedTouches.length!==1)return;
+      var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+      if(Math.abs(dx)>75&&Math.abs(dx)>1.7*Math.abs(dy)&&Date.now()-t0<800){
+        if(dx<0&&ME<N)location.href='s'+(ME+1)+'.html';
+        else if(dx>0&&ME>1)location.href='s'+(ME-1)+'.html';
+      }
+      ok=false;
+    },{passive:true});
+  }catch(err){}
+})();
+</script>
+</body></html>

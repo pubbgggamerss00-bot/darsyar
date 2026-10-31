@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* 60fps GPU Hardware accelerated keyframe animations */
+@keyframes floatDana {
+  0%, 100% { transform: translateY(0px); filter: drop-shadow(0 4px 8px rgba(79, 70, 229, 0.25)); }
+  50% { transform: translateY(-5px); filter: drop-shadow(0 10px 18px rgba(79, 70, 229, 0.45)); }
+}
+@keyframes pulseRadar {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes shimmerWave {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float-dana {
+  animation: floatDana 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+.animate-shimmer {
+  animation: shimmerWave 2.2s infinite linear;
+}
+.fade-in-up-card {
+  animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.book-perspective-wrapper {
+  perspective: 1200px;
+}
+.page-spread-card {
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease;
+  will-change: transform, box-shadow;
+}
+.page-spread-card.turning-next {
+  transform: rotateY(-7deg) scale(0.985) translateX(-8px);
+  box-shadow: 12px 16px 36px rgba(0, 0, 0, 0.18);
+}
+.page-spread-card.turning-prev {
+  transform: rotateY(7deg) scale(0.985) translateX(8px);
+  box-shadow: -12px 16px 36px rgba(0, 0, 0, 0.18);
+}
+.dog-ear-curl {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.dog-ear-curl:hover, .dog-ear-curl:active {
+  transform: scale(1.22) translate(1px, -1px);
+}
+</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-tertiary-fixed": "#2a1700", "on-primary-container": "#dad7ff", "on-tertiary": "#ffffff", "inverse-on-surface": "#eaf1ff", "on-surface": "#0b1c30", "tertiary-container": "#885500", "surface-bright": "#f8f9ff", "on-surface-variant": "#464555", "outline": "#777587", "surface-tint": "#4d44e3", "on-tertiary-container": "#ffd4a4", "primary-fixed-dim": "#c3c0ff", "on-secondary-container": "#006172", "outline-variant": "#c7c4d8", "surface-variant": "#d3e4fe", "secondary-container": "#57dffe", "on-secondary": "#ffffff", "background": "#f8f9ff", "on-primary-fixed": "#0f0069", "primary": "#3525cd", "surface-container-lowest": "#ffffff", "surface-dim": "#cbdbf5", "surface": "#f8f9ff", "on-secondary-fixed": "#001f26", "secondary-fixed-dim": "#4cd7f6", "on-error-container": "#93000a", "on-primary-fixed-variant": "#3323cc", "surface-container-high": "#dce9ff", "surface-container-highest": "#d3e4fe", "error-container": "#ffdad6", "tertiary": "#684000", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#653e00", "on-primary": "#ffffff", "error": "#ba1a1a", "on-background": "#0b1c30", "tertiary-fixed-dim": "#ffb95f", "primary-container": "#4f46e5", "surface-container": "#e5eeff", "on-error": "#ffffff", "primary-fixed": "#e2dfff", "inverse-primary": "#c3c0ff", "on-secondary-fixed-variant": "#004e5c", "surface-container-low": "#eff4ff", "tertiary-fixed": "#ffddb8", "secondary-fixed": "#acedff", "secondary": "#00687a" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-md": "1rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "margin": "1rem", "gutter": "1rem", "gutter-tablet": "1.25rem", "space-xl": "2rem", "margin-tablet": "2rem", "space-sm": "0.5rem" }, "fontFamily": { "label-md": ["Vazirmatn"], "body-md": ["Vazirmatn"], "display": ["Vazirmatn"], "headline-sm": ["Vazirmatn"], "display-mobile": ["Vazirmatn"], "body-sm": ["Vazirmatn"], "label-sm": ["Vazirmatn"], "headline-lg-mobile": ["Vazirmatn"], "headline-lg": ["Vazirmatn"], "body-lg": ["Vazirmatn"], "headline-md": ["Vazirmatn"], "label-lg": ["Vazirmatn"] }, "fontSize": { "label-md": ["13px", { "lineHeight": "20px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }], "display": ["36px", { "lineHeight": "52px", "fontWeight": "800" }], "headline-sm": ["17px", { "lineHeight": "28px", "fontWeight": "600" }], "display-mobile": ["28px", { "lineHeight": "40px", "fontWeight": "800" }], "body-sm": ["12px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "16px", "fontWeight": "700" }], "headline-lg-mobile": ["22px", { "lineHeight": "34px", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "42px", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "28px", "fontWeight": "500" }], "headline-md": ["20px", { "lineHeight": "32px", "fontWeight": "700" }], "label-lg": ["15px", { "lineHeight": "24px", "fontWeight": "700" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><button aria-label="بازگشت به فهرست کتاب" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container transition-all active:scale-90" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward</span></button><div class="flex flex-col text-right"><h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight truncate max-w-[160px]">Interactive Textbook Reader</h1><span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-primary">menu_book</span>فصل سوم: چندضلعی‌ها و تقارن</span></div></div><div class="flex items-center gap-1"><button aria-label="روخوانی هوشمند صوتی" class="w-11 h-11 rounded-full flex items-center justify-center text-primary bg-surface-container-low hover:bg-surface-container transition-all active:scale-90"><span class="material-symbols-outlined text-[22px]">record_voice_over</span></button><button aria-label="نشان‌گذاری صفحه" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90"><span class="material-symbols-outlined text-[22px]">bookmark_border</span></button><button aria-label="نمایش تمام‌صفحه" class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-all active:scale-90"><span class="material-symbols-outlined text-[22px]">fullscreen</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center mr-1 shadow-sm transition-transform active:scale-95"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full pb-safe select-none">
+<!-- Gamified Lesson XP & Mode Toolbar -->
+<section class="px-margin pt-space-sm pb-space-xs flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md shadow-sm transition-transform hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[18px] text-tertiary animate-pulse" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>۳۵۰ امتیاز مطالعه</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+<span>پایه هشتم</span>
+</span>
+</div>
+<!-- Smart Interactive Filter Pills with Smooth Transitions -->
+<div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center gap-1.5 shadow-sm active:scale-95 transition-all duration-200" id="toggle-solution-btn" onclick="toggleSmartLayer('solution')">
+<span class="material-symbols-outlined text-[16px] transition-transform duration-200">visibility</span>
+<span>پاسخ تشریحی</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1.5 active:scale-95 transition-all duration-200" id="toggle-notes-btn" onclick="toggleSmartLayer('notes')">
+<span class="material-symbols-outlined text-[16px] transition-transform duration-200">draw</span>
+<span>یادداشت‌ها</span>
+</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1.5 active:scale-95 transition-all duration-200" id="toggle-highlights-btn" onclick="toggleSmartLayer('highlights')">
+<span class="material-symbols-outlined text-[16px] transition-transform duration-200">format_ink_highlighter</span>
+<span>نکات طلایی</span>
+</button>
+</div>
+</section>
+<!-- Physical 3D Book Experience Canvas with 3D Perspective -->
+<section class="px-margin my-space-xs book-perspective-wrapper">
+<div class="relative w-full rounded-3xl bg-surface-container-low shadow-xl p-2 sm:p-3 overflow-hidden">
+<!-- Outer Binding Ambient Depth with Smooth 3D Page Turn Transform -->
+<div class="page-spread-card relative w-full rounded-2xl bg-[#fcf9f2] text-[#1e293b] shadow-2xl overflow-hidden min-h-[580px] flex flex-col justify-between" id="book-spread">
+<!-- Texture Backdrop & Spine Center Depth Gradient -->
+<div class="absolute inset-0 pointer-events-none opacity-40 bg-[radial-gradient(#e2d9c8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="absolute inset-y-0 right-1/2 w-8 -mr-4 bg-gradient-to-r from-black/15 via-black/5 to-transparent pointer-events-none hidden md:block"></div>
+<div class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/10 to-transparent pointer-events-none"></div>
+<div class="absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/10 to-transparent pointer-events-none"></div>
+<!-- Dynamic Smooth Dog-Ear Curl (Interactive Page Peel) -->
+<div class="absolute top-0 right-0 w-11 h-11 overflow-hidden cursor-pointer z-20 group" onclick="triggerPagePeel()" title="ورق زدن به صفحه قبل">
+<div class="dog-ear-curl absolute top-0 right-0 w-14 h-14 bg-gradient-to-bl from-[#e6decb] to-[#ffffff] shadow-md -rotate-45 translate-x-7 -translate-y-7 group-hover:shadow-lg"></div>
+<span class="absolute top-1 right-1 text-[10px] text-on-surface-variant font-label-sm pointer-events-none">۳۱</span>
+</div>
+<!-- Official Textbook Ministry Header Stamp -->
+<header class="relative z-10 px-4 pt-3.5 pb-2 flex items-center justify-between border-none border-transparent text-[#64748b]">
+<div class="flex items-center gap-2">
+<span class="w-6 h-6 rounded-full bg-[#eee7d7] flex items-center justify-center text-[#78350f] text-[12px] font-bold shadow-xs">IR</span>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-[#475569] leading-tight">جمهوری اسلامی ایران - وزارت آموزش و پرورش</span>
+<span class="font-body-sm text-body-sm text-[#94a3b8]">کتاب درسی ریاضی پایه هشتم دوره‌ی اول متوسطه</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="px-2.5 py-0.5 rounded-full bg-[#f1ebd9] text-[#78350f] font-label-md text-label-md">فصل ۳</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+</header>
+<!-- Main Book Content Area (Spreads Page 32 & 33) -->
+<div class="relative z-10 px-4 py-2 flex flex-col gap-space-md">
+<!-- Chapter Banner with Authentic Iranian Textbook Branding -->
+<div class="fade-in-up-card flex items-center justify-between bg-gradient-to-l from-primary-fixed to-surface-variant p-3.5 rounded-2xl shadow-sm transition-transform duration-200 active:scale-[0.99]">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">polyline</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">درس دوم: زاویه‌های داخلی</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">مجموع زاویه‌های داخلی چندضلعی‌ها و قطرهای رأس مشترک</span>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-center px-3 py-1 rounded-xl bg-surface-container-lowest shadow-sm">
+<span class="font-label-sm text-label-sm text-primary">شماره مبحث</span>
+<span class="font-label-lg text-label-lg text-on-surface">۳ - ۲</span>
+</div>
+</div>
+<!-- Handwritten Student Sticky Note (Margin Note) with Smooth Transition -->
+<div class="fade-in-up-card relative bg-[#fffbeb] p-3 rounded-xl shadow-md transform -rotate-1 transition-all duration-300 hover:rotate-0 hover:shadow-lg active:scale-[0.99]" id="handwritten-note">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#b45309] text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">push_pin</span>
+<div class="flex flex-col text-right">
+<span class="font-label-md text-label-md text-[#92400e]">فرمول طلایی شب امتحان (خیلی مهم!):</span>
+<p class="font-body-md text-body-md text-[#78350f] font-semibold leading-relaxed">
+                  مجموع زاویه‌های داخلی هر n-ضلعی: <span class="bg-[#fef08a] px-2 py-0.5 rounded-md text-primary inline-block transition-transform hover:scale-105">S = (n - ۲) × ۱۸۰°</span>
+<br/>
+<span class="text-[12px] text-[#b45309]">چون از یک رأس می‌توان (n - ۳) قطر رسم کرد که شکل را به (n - ۲) مثلث تبدیل می‌کند.</span>
+</p>
+</div>
+</div>
+</div>
+<!-- Section 1: Official Textbook Question Box with 3D SVG Geometry -->
+<div class="fade-in-up-card rounded-2xl bg-white p-4 shadow-sm flex flex-col gap-3 relative transition-all duration-200 hover:shadow-md">
+<!-- Glowing Interactive Tap Hotspot with Smooth Ripple Pulse -->
+<button class="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm shadow-sm active:scale-95 transition-all duration-200 hover:shadow-md group" onclick="openDeepDiveModal('activity-1')">
+<span class="material-symbols-outlined text-[16px] group-hover:scale-110 transition-transform">play_circle</span>
+<span>ویدیو تدریس معلم</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-label-md">۱</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">کار در کلاس (صفحه ۳۲)</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-right">
+              در هفت‌ضلعی زیر، تمام قطرهایی را که از یک رأس مشخص (رأس A) می‌گذرند رسم کرده‌ایم. با دقت در شکل به پرسش‌های زیر پاسخ دهید:
+            </p>
+<!-- Illustrated Heptagon Vector Diagram -->
+<div class="w-full flex flex-col md:flex-row items-center justify-center gap-4 py-2 bg-[#f8fafc] rounded-xl transition-all duration-200 hover:bg-[#f1f5f9]">
+<div class="relative w-64 h-56 flex items-center justify-center">
+<svg class="w-full h-full drop-shadow-sm transition-transform duration-300 hover:scale-[1.02]" fill="none" stroke="currentColor" viewbox="0 0 280 240">
+<!-- Heptagon Perimeter -->
+<polygon class="stroke-primary" fill="#e0e7ff" fill-opacity="0.35" points="140,20 230,60 255,155 195,225 85,225 25,155 50,60" stroke-width="3"></polygon>
+<!-- Interior Diagonals from Vertex A (140,20) -->
+<line class="stroke-secondary" stroke-dasharray="4 3" stroke-width="2" x1="140" x2="255" y1="20" y2="155"></line>
+<line class="stroke-secondary" stroke-dasharray="4 3" stroke-width="2" x1="140" x2="195" y1="20" y2="225"></line>
+<line class="stroke-secondary" stroke-dasharray="4 3" stroke-width="2" x1="140" x2="85" y1="20" y2="225"></line>
+<line class="stroke-secondary" stroke-dasharray="4 3" stroke-width="2" x1="140" x2="25" y1="20" y2="155"></line>
+<!-- Vertex Labels -->
+<circle class="fill-primary" cx="140" cy="20" r="5"></circle>
+<text fill="#3525cd" font-family="Vazirmatn" font-size="13" font-weight="bold" text-anchor="middle" x="140" y="14">A (رأس اصلی)</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="242" y="60">B</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="265" y="160">C</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="205" y="235">D</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="75" y="235">E</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="12" y="160">F</text>
+<text fill="#464555" font-family="Vazirmatn" font-size="11" x="38" y="60">G</text>
+<!-- Triangle Index Badges -->
+<text fill="#00687a" font-family="Vazirmatn" font-size="11" font-weight="bold" x="190" y="85">Δ ۱</text>
+<text fill="#00687a" font-family="Vazirmatn" font-size="11" font-weight="bold" x="195" y="150">Δ ۲</text>
+<text fill="#00687a" font-family="Vazirmatn" font-size="11" font-weight="bold" x="140" y="180">Δ ۳</text>
+<text fill="#00687a" font-family="Vazirmatn" font-size="11" font-weight="bold" x="85" y="150">Δ ۴</text>
+<text fill="#00687a" font-family="Vazirmatn" font-size="11" font-weight="bold" x="90" y="85">Δ ۵</text>
+</svg>
+</div>
+<!-- Question items & Interactive Blanks -->
+<div class="flex-1 flex flex-col gap-2.5 text-right w-full">
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col gap-1 transition-transform duration-200 active:scale-[0.99]">
+<span class="font-body-sm text-body-sm text-on-surface-variant">الف) از رأس A چند قطر رسم شده است؟</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">تعداد قطرها:</span>
+<span class="px-3 py-0.5 rounded-lg bg-white shadow-sm font-label-lg text-label-lg text-primary font-bold">۴ قطر</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(n - ۳ = ۷ - ۳ = ۴)</span>
+</div>
+</div>
+<div class="p-2.5 rounded-xl bg-surface-container-low flex flex-col gap-1 transition-transform duration-200 active:scale-[0.99]">
+<span class="font-body-sm text-body-sm text-on-surface-variant">ب) این هفت‌ضلعی به چند مثلث تقسیم شده است؟</span>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface">تعداد مثلث‌ها:</span>
+<span class="px-3 py-0.5 rounded-lg bg-white shadow-sm font-label-lg text-label-lg text-secondary font-bold">۵ مثلث</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(n - ۲ = ۷ - ۲ = ۵)</span>
+</div>
+</div>
+<!-- Interactive Reveal Solution Container with Smooth Transition -->
+<div class="p-3 rounded-xl bg-secondary-fixed/50 flex flex-col gap-1 transition-all duration-300" id="solution-container">
+<span class="font-label-sm text-label-sm text-on-secondary-fixed font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+                    محاسبه مجموع زاویه‌های داخلی هفت‌ضلعی:
+                  </span>
+<div class="font-body-md text-body-md text-on-surface font-semibold dir-ltr text-right">
+                    ۵ × ۱۸۰° = ۹۰۰°
+                  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Activity Table (فعالیت صفحه ۳۳) -->
+<div class="fade-in-up-card rounded-2xl bg-white p-4 shadow-sm flex flex-col gap-3 transition-all duration-200 hover:shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold text-label-md">۲</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">فعالیت و جدول تعمیم (صفحه ۳۳)</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-md">تعمیم فرمول</span>
+</div>
+<!-- Authentic Curriculum Fill-in Table -->
+<div class="overflow-x-auto rounded-xl bg-surface-container-lowest shadow-sm">
+<table class="w-full text-right text-on-surface font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md text-label-md">
+<th class="p-2.5">نام شکل</th>
+<th class="p-2.5 text-center">تعداد اضلاع (n)</th>
+<th class="p-2.5 text-center">تعداد مثلث‌ها (n-۲)</th>
+<th class="p-2.5 text-center">مجموع زوایا</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-2.5 font-bold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+                      مثلث
+                    </td>
+<td class="p-2.5 text-center font-label-md text-label-md">۳</td>
+<td class="p-2.5 text-center font-label-md text-label-md">۱</td>
+<td class="p-2.5 text-center text-primary font-bold">۱ × ۱۸۰° = ۱۸۰°</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-2.5 font-bold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                      چهارضلعی
+                    </td>
+<td class="p-2.5 text-center font-label-md text-label-md">۴</td>
+<td class="p-2.5 text-center font-label-md text-label-md">۲</td>
+<td class="p-2.5 text-center text-secondary font-bold">۲ × ۱۸۰° = ۳۶۰°</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-2.5 font-bold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary"></span>
+                      پنج‌ضلعی
+                    </td>
+<td class="p-2.5 text-center font-label-md text-label-md">۵</td>
+<td class="p-2.5 text-center font-label-md text-label-md">۳</td>
+<td class="p-2.5 text-center text-tertiary font-bold">۳ × ۱۸۰° = ۵۴۰°</td>
+</tr>
+<tr class="bg-primary-fixed/20 font-bold">
+<td class="p-2.5 text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">stars</span>
+                      n - ضلعی
+                    </td>
+<td class="p-2.5 text-center font-label-md text-label-md text-primary">n</td>
+<td class="p-2.5 text-center font-label-md text-label-md text-primary">n - ۲</td>
+<td class="p-2.5 text-center text-primary">(n - ۲) × ۱۸۰°</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Practice Interactive Checkpoint Mini Challenge -->
+<div class="mt-1 p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">سنجش سریع: مجموع زوایای داخلی یک ۱۰-ضلعی چقدر است؟</span>
+<span class="hidden px-2 py-0.5 rounded-md bg-secondary text-on-secondary font-label-sm text-label-sm transition-all duration-300" id="quiz-feedback-badge">آفرین! درسته</span>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="quiz-btn py-2 px-3 rounded-xl bg-white shadow-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-200" onclick="checkAnswer(this, false)">
+                  ۱۲۶۰°
+                </button>
+<button class="quiz-btn py-2 px-3 rounded-xl bg-white shadow-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-200" onclick="checkAnswer(this, true)">
+                  ۱۴۴۰°
+                </button>
+<button class="quiz-btn py-2 px-3 rounded-xl bg-white shadow-sm font-label-md text-label-md text-on-surface hover:bg-surface-variant active:scale-95 transition-all duration-200" onclick="checkAnswer(this, false)">
+                  ۱۸۰۰°
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Realistic Book Bottom Margins & Official Page Numbers -->
+<footer class="relative z-10 px-6 py-3 flex items-center justify-between text-[#64748b]">
+<!-- Page 33 (Left side in Persian RTL reader) -->
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-[#f1ebd9] flex items-center justify-center font-label-lg text-label-lg text-[#1e293b] shadow-inner font-bold">۳۳</span>
+<span class="font-body-sm text-body-sm text-[#94a3b8] hidden xs:inline">صفحه زوج / تمرین و فعالیت</span>
+</div>
+<!-- Subtle Paper Fold Dog-Ear Hint (Bottom Left) with Smooth Hover Action -->
+<div class="cursor-pointer group flex items-center gap-1.5 transition-transform duration-200 active:scale-95" onclick="nextPageSpread()" title="ورق زدن به صفحه بعد">
+<span class="font-label-sm text-label-sm text-primary group-hover:underline">ورق زدن به بعد</span>
+<span class="material-symbols-outlined text-[18px] text-primary transition-transform duration-300 group-hover:-translate-x-1.5">arrow_back</span>
+</div>
+<!-- Page 32 (Right side in Persian RTL reader) -->
+<div class="flex items-center gap-2">
+<span class="font-body-sm text-body-sm text-[#94a3b8] hidden xs:inline">صفحه فرد / درس دوم</span>
+<span class="w-8 h-8 rounded-full bg-[#f1ebd9] flex items-center justify-center font-label-lg text-label-lg text-[#1e293b] shadow-inner font-bold">۳۲</span>
+</div>
+</footer>
+</div>
+</div>
+</section>
+<!-- Interactive 3D Page Turn Controller Dock -->
+<section class="px-margin my-space-xs flex flex-col gap-2">
+<div class="rounded-2xl bg-surface-container p-3 flex items-center justify-between gap-space-sm shadow-sm">
+<!-- Prev Page Button -->
+<button class="h-11 px-3.5 rounded-xl bg-white text-on-surface font-label-md text-label-md flex items-center gap-1 shadow-sm active:scale-90 hover:shadow-md transition-all duration-200" onclick="prevPageSpread()">
+<span class="material-symbols-outlined text-[20px] transition-transform group-hover:translate-x-0.5">chevron_right</span>
+<span>صفحه قبل</span>
+</button>
+<!-- Interactive Scrubber & Indicator with Shimmer Progress Bar -->
+<div class="flex-1 flex flex-col items-center gap-1 px-2">
+<div class="flex items-center justify-between w-full">
+<span class="font-label-sm text-label-sm text-on-surface-variant">صفحه ۳۲ و ۳۳</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">از ۱۶۴ صفحه</span>
+</div>
+<div class="relative w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 bg-gradient-to-l from-primary to-secondary rounded-full w-[21%] transition-all duration-300 overflow-hidden">
+<!-- Shimmer light wave effect -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></div>
+</div>
+</div>
+</div>
+<!-- Next Page Button with Tactile Accent -->
+<button class="h-11 px-3.5 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1 shadow-md active:scale-90 hover:bg-primary-container transition-all duration-200" onclick="nextPageSpread()">
+<span>صفحه بعد</span>
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+</div>
+<!-- Quick Action: Dana AI Assistant Floating Pill with Breathing Animation & Pulse Ripple -->
+<div class="flex items-center justify-between p-3 rounded-2xl bg-gradient-to-r from-primary/10 via-secondary/10 to-surface-container-low shadow-sm transition-all duration-300 hover:shadow-md">
+<div class="flex items-center gap-2.5">
+<!-- Floating / Breathing Dana Avatar -->
+<div class="w-10 h-10 rounded-2xl bg-primary flex items-center justify-center text-on-primary shadow-sm animate-float-dana">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">دانا؛ هوش مصنوعی ریاضی هشتم</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">هر جای این صفحه رو متوجه نشدی، فوری بپرس!</span>
+</div>
+</div>
+<!-- Interactive Pulse Ripple Action Button -->
+<div class="relative flex items-center justify-center">
+<span class="absolute inset-0 rounded-xl bg-secondary/40 pointer-events-none" style="animation: pulseRadar 2s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+<button class="relative px-3.5 py-2 rounded-xl bg-secondary text-on-secondary font-label-md text-label-md shadow-sm active:scale-90 transition-all duration-200 flex items-center gap-1 hover:bg-[#005a6a]" onclick="askDanaAI()">
+<span>پرسش صوتی یا متنی</span>
+<span class="material-symbols-outlined text-[16px]">mic</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive Deep-Dive Bottom Modal Sheet (Hidden by Default) -->
+<div class="fixed inset-x-0 bottom-0 z-50 p-4 bg-surface rounded-t-3xl shadow-2xl transition-transform duration-300 ease-out translate-y-full border-none" id="dive-sheet">
+<div class="w-12 h-1.5 bg-surface-variant rounded-full mx-auto mb-3"></div>
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">ondemand_video</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">تدریس ویدیویی هوشمند کار در کلاس ۳۲</h3>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant active:scale-90 transition-transform" onclick="closeDeepDiveModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="rounded-2xl bg-surface-container-low p-4 flex flex-col gap-3">
+<!-- Media representation of Iranian master teacher explanation -->
+<div class="relative w-full h-44 rounded-xl overflow-hidden bg-slate-900 flex items-center justify-center text-white">
+<div class="text-center flex flex-col items-center gap-2 z-10">
+<span class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined text-[28px] text-white">play_arrow</span>
+</span>
+<span class="font-label-md text-label-md">پخش آموزش تعاملی (۳ دقیقه و ۴۰ ثانیه)</span>
+<span class="font-body-sm text-body-sm text-slate-300">مدرس: استاد حسینی - مؤلف کتب درسی ریاضی</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-right">
+        در این کلیپ کوتاه، نحوه‌ی افراز چندضلعی‌ها با کشیدن قطرها از یک رأس و استدلال استقرایی برای رسیدن به رابطه‌ی <span class="text-primary font-bold">(n-2)×180</span> به شیوه‌ی بصری پویا شبیه‌سازی می‌شود.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  let notesVisible = true;
+  let solutionVisible = true;
+  let highlightsVisible = true;
+
+  function toggleSmartLayer(type) {
+    if (type === 'notes') {
+      notesVisible = !notesVisible;
+      const noteEl = document.getElementById('handwritten-note');
+      const btn = document.getElementById('toggle-notes-btn');
+      if (noteEl) {
+        if (notesVisible) {
+          noteEl.style.display = 'block';
+          noteEl.style.opacity = '0';
+          noteEl.style.transform = 'translateY(-8px) rotate(-1deg)';
+          requestAnimationFrame(() => {
+            noteEl.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+            noteEl.style.opacity = '1';
+            noteEl.style.transform = 'translateY(0) rotate(-1deg)';
+          });
+        } else {
+          noteEl.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+          noteEl.style.opacity = '0';
+          noteEl.style.transform = 'translateY(-8px) rotate(-1deg)';
+          setTimeout(() => { noteEl.style.display = 'none'; }, 200);
+        }
+      }
+      btn.classList.toggle('bg-primary', notesVisible);
+      btn.classList.toggle('text-on-primary', notesVisible);
+      btn.classList.toggle('bg-surface-container', !notesVisible);
+      btn.classList.toggle('text-on-surface-variant', !notesVisible);
+    } else if (type === 'solution') {
+      solutionVisible = !solutionVisible;
+      const solEl = document.getElementById('solution-container');
+      const btn = document.getElementById('toggle-solution-btn');
+      if (solEl) {
+        solEl.style.opacity = solutionVisible ? '1' : '0.2';
+        solEl.style.transform = solutionVisible ? 'scale(1)' : 'scale(0.98)';
+      }
+      btn.classList.toggle('bg-primary', solutionVisible);
+      btn.classList.toggle('text-on-primary', solutionVisible);
+      btn.classList.toggle('bg-surface-container', !solutionVisible);
+      btn.classList.toggle('text-on-surface-variant', !solutionVisible);
+    } else if (type === 'highlights') {
+      highlightsVisible = !highlightsVisible;
+      const btn = document.getElementById('toggle-highlights-btn');
+      btn.classList.toggle('bg-primary', highlightsVisible);
+      btn.classList.toggle('text-on-primary', highlightsVisible);
+      btn.classList.toggle('bg-surface-container', !highlightsVisible);
+      btn.classList.toggle('text-on-surface-variant', !highlightsVisible);
+    }
+  }
+
+  function triggerPagePeel() {
+    const book = document.getElementById('book-spread');
+    if (book) {
+      book.classList.add('turning-prev');
+      setTimeout(() => {
+        book.classList.remove('turning-prev');
+      }, 450);
+    }
+  }
+
+  function nextPageSpread() {
+    const book = document.getElementById('book-spread');
+    if (book) {
+      book.classList.add('turning-next');
+      setTimeout(() => {
+        book.classList.remove('turning-next');
+      }, 450);
+    }
+  }
+
+  function prevPageSpread() {
+    const book = document.getElementById('book-spread');
+    if (book) {
+      book.classList.add('turning-prev');
+      setTimeout(() => {
+        book.classList.remove('turning-prev');
+      }, 450);
+    }
+  }
+
+  function checkAnswer(btn, isCorrect) {
+    const allBtns = btn.parentElement.querySelectorAll('.quiz-btn');
+    allBtns.forEach(b => {
+      b.classList.remove('bg-emerald-500', 'bg-rose-500', 'bg-primary', 'bg-error', 'text-white', 'text-on-primary', 'text-on-error');
+    });
+
+    const badge = document.getElementById('quiz-feedback-badge');
+
+    if (isCorrect) {
+      btn.classList.add('bg-primary', 'text-on-primary');
+      if (badge) {
+        badge.classList.remove('hidden');
+        badge.innerText = 'آفرین! کاملاً درسته: (۱۰-۲) × ۱۸۰ = ۱۴۴۰';
+      }
+    } else {
+      btn.classList.add('bg-error', 'text-on-error');
+      if (badge) {
+        badge.classList.remove('hidden');
+        badge.innerText = 'دوباره حساب کن: از فرمول (n-۲)×۱۸۰ استفاده کن!';
+      }
+    }
+  }
+
+  function openDeepDiveModal(id) {
+    const modal = document.getElementById('dive-sheet');
+    if (modal) {
+      modal.classList.remove('translate-y-full');
+    }
+  }
+
+  function closeDeepDiveModal() {
+    const modal = document.getElementById('dive-sheet');
+    if (modal) {
+      modal.classList.add('translate-y-full');
+    }
+  }
+
+  function askDanaAI() {
+    alert('«سلام دانش‌آموز کوشا! سوالت درباره قطرهای هفت‌ضلعی یا جدول فرمول صفحه ۳۳ رو بپرس تا با انیمیشن برات توضیح بدم.»');
+  }
+</script></main></body></html>

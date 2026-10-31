@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head><title>تحلیل عملکرد با دانا</title><link href="assets/fonts.css" rel="stylesheet"/><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/>
+
+<style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="assets/tailwind.js"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-error-container': '#93000a', 'surface-container-lowest': '#ffffff', 'on-secondary-fixed': '#001f26', 'inverse-primary': '#c3c0ff', 'inverse-on-surface': '#eaf1ff', 'tertiary-fixed': '#ffddb8', 'primary': '#3525cd', 'outline-variant': '#c7c4d8', 'surface-bright': '#f8f9ff', 'tertiary-fixed-dim': '#ffb95f', 'inverse-surface': '#213145', 'secondary-fixed-dim': '#4cd7f6', 'on-error': '#ffffff', 'primary-container': '#4f46e5', 'tertiary-container': '#885500', 'secondary-fixed': '#acedff', 'surface-container-high': '#dce9ff', 'error': '#ba1a1a', 'error-container': '#ffdad6', 'on-surface': '#0b1c30', 'surface-container-highest': '#d3e4fe', 'surface-tint': '#4d44e3', 'on-tertiary-fixed-variant': '#653e00', 'primary-fixed-dim': '#c3c0ff', 'primary-fixed': '#e2dfff', 'tertiary': '#684000', 'outline': '#777587', 'on-tertiary': '#ffffff', 'on-secondary-fixed-variant': '#004e5c', 'on-primary-container': '#dad7ff', 'on-tertiary-container': '#ffd4a4', 'on-secondary-container': '#006172', 'secondary': '#00687a', 'surface-variant': '#d3e4fe', 'surface-container': '#e5eeff', 'on-background': '#0b1c30', 'on-primary': '#ffffff', 'background': '#f8f9ff', 'on-primary-fixed-variant': '#3323cc', 'on-primary-fixed': '#0f0069', 'secondary-container': '#57dffe', 'on-tertiary-fixed': '#2a1700', 'surface-container-low': '#eff4ff', 'surface': '#f8f9ff', 'on-secondary': '#ffffff', 'on-surface-variant': '#464555', 'surface-dim': '#cbdbf5' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'gutter': '1rem', 'space-xl': '2rem', 'space-xs': '0.25rem', 'gutter-tablet': '1.25rem', 'space-sm': '0.5rem', 'margin': '1rem', 'space-md': '1rem', 'margin-tablet': '2rem', 'space-lg': '1.5rem' }, 'fontFamily': { 'display': ['Vazirmatn'], 'headline-md': ['Vazirmatn'], 'body-lg': ['Vazirmatn'], 'display-mobile': ['Vazirmatn'], 'body-sm': ['Vazirmatn'], 'headline-sm': ['Vazirmatn'], 'label-md': ['Vazirmatn'], 'body-md': ['Vazirmatn'], 'headline-lg': ['Vazirmatn'], 'label-lg': ['Vazirmatn'], 'label-sm': ['Vazirmatn'], 'headline-lg-mobile': ['Vazirmatn'] }, 'fontSize': { 'display': ['36px', { 'lineHeight': '52px', 'fontWeight': '800' }], 'headline-md': ['20px', { 'lineHeight': '32px', 'fontWeight': '700' }], 'body-lg': ['16px', { 'lineHeight': '28px', 'fontWeight': '500' }], 'display-mobile': ['28px', { 'lineHeight': '40px', 'fontWeight': '800' }], 'body-sm': ['12px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'headline-sm': ['17px', { 'lineHeight': '28px', 'fontWeight': '600' }], 'label-md': ['13px', { 'lineHeight': '20px', 'fontWeight': '600' }], 'body-md': ['14px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'headline-lg': ['28px', { 'lineHeight': '42px', 'fontWeight': '700' }], 'label-lg': ['15px', { 'lineHeight': '24px', 'fontWeight': '700' }], 'label-sm': ['11px', { 'lineHeight': '16px', 'fontWeight': '700' }], 'headline-lg-mobile': ['22px', { 'lineHeight': '34px', 'fontWeight': '700' }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="بازگشت" class="w-11 h-11 flex items-center justify-center rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface transition-transform active:scale-95" onclick="history.back()"><span class="material-symbols-outlined text-xl">arrow_forward</span></button><h1 class="font-headline-sm text-headline-sm text-on-surface">Book Lesson Detail</h1></div><div class="flex items-center gap-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="assets/img/00f3a85ff634.png"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen"><div class="flex flex-col w-full px-margin pb-space-xl gap-space-md text-on-surface">
+<!-- Period Filter & Action Controls -->
+<div class="flex items-center justify-between gap-space-xs mt-space-sm">
+<div class="flex items-center p-1 bg-surface-container rounded-2xl gap-1">
+<button class="filter-tab px-3 py-1.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md transition-all active:scale-95" type="button">ماهانه</button>
+<button class="filter-tab px-3 py-1.5 rounded-xl text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high active:scale-95" type="button">ترم اول</button>
+<button class="filter-tab px-3 py-1.5 rounded-xl text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high active:scale-95" type="button">کل سال</button>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="خروجی کارنامه" class="w-10 h-10 flex items-center justify-center rounded-2xl bg-surface-container hover:bg-surface-container-high text-primary transition-transform active:scale-90 shadow-sm" onclick="alert('پیش‌نمایش PDF کارنامه آماده دانلود شد!')" type="button">
+<span class="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+</button>
+<button aria-label="اشتراک‌گذاری با اولیا" class="w-10 h-10 flex items-center justify-center rounded-2xl bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-container transition-transform active:scale-90 shadow-sm" onclick="alert('لینک گزارش هوشمند برای اولیا ارسال شد.')" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+<!-- Overall Mastery & Rank Hero Bento Card -->
+<div class="relative overflow-hidden rounded-3xl bg-surface-container-lowest p-space-md shadow-[0_8px_24px_rgba(79,70,229,0.08)] flex flex-col gap-space-md">
+<div class="absolute -top-12 -left-12 w-36 h-36 rounded-full bg-gradient-to-br from-primary-fixed to-secondary-fixed opacity-40 blur-2xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-secondary-container opacity-25 blur-xl pointer-events-none"></div>
+<!-- Header info: Name, Grade & Celebration Chip -->
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-primary to-primary-container p-0.5 shadow-md flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">آرین محمدی</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">پایه هشتم B</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">دوره اول دبیرستان شهید بهشتی</span>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-base text-primary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>رتبه ۳ کلاس</span>
+</div>
+</div>
+<!-- Metrics Bento Row -->
+<div class="grid grid-cols-3 gap-2 relative z-10">
+<div class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface-variant">معدل کل</span>
+<span class="font-headline-md text-headline-md text-primary font-black mt-0.5">۱۹.۴۵</span>
+<div class="flex items-center gap-0.5 mt-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span class="font-label-sm text-label-sm">+۰.۳۵</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface-variant">تراز هوشمند</span>
+<span class="font-headline-md text-headline-md text-on-surface font-black mt-0.5">۷۲۴۰</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">عالی (۹۵٪ برتر)</span>
+</div>
+<div class="flex flex-col items-center justify-center p-2.5 rounded-2xl bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface-variant">آمادگی نهایی</span>
+<span class="font-headline-md text-headline-md text-secondary font-black mt-0.5">۹۱٪</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">سبز و آماده</span>
+</div>
+</div>
+<!-- Animated-like Visual Bar: Overall Readiness -->
+<div class="flex flex-col gap-1.5 relative z-10 pt-1">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">وضعیت تسلط بر بودجه‌بندی آزمون‌ها</span>
+<span class="text-primary font-bold">۲۲ از ۲۴ فصل مطالعه‌شده</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden p-0.5 flex">
+<div class="h-full rounded-full bg-gradient-to-l from-primary to-secondary-container transition-all duration-700" style="width: 91%;"></div>
+</div>
+</div>
+</div>
+<!-- Dana AI Coach Insight Section -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">تحلیل هوش مصنوعی دانا</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">بروزرسانی: امروز ۱۶:۲۰</span>
+</div>
+<!-- Dana Actionable Smart Tip Card -->
+<div class="p-space-md rounded-3xl bg-surface-container-low relative overflow-hidden flex flex-col gap-2.5 shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">پیشنهاد هوشمند برای جهش نمره 💡</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            «آرین عزیز، در مبحث <span class="text-primary font-bold">جبر و معادله ریاضی</span> فقط ۲ تست غلط داشتی. با حل ۵ تست هدفمند تکمیلی، احتمال کسب نمره ۲۰ در آزمون میان‌ترم به ۹۸٪ می‌رسه!»
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-1">
+<button class="h-10 px-4 rounded-xl bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-sm transition-transform active:scale-95" onclick="alert('۵ تست چالش جبر و معادله بارگذاری شد!')" type="button">
+<span class="material-symbols-outlined text-lg">bolt</span>
+<span>شروع کوییز اختصاصی جبر (۵ تست)</span>
+</button>
+<button class="h-10 px-3 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md transition-transform active:scale-95" onclick="alert('یادآوری برای ساعت ۱۸ فردا تنظیم شد.')" type="button">
+<span>بعداً</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Subject-by-Subject Analytical Breakdown -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">وضعیت دروس پایه</h3>
+<span class="font-label-md text-label-md text-primary font-semibold">مشاهده ریزجزئیات</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Persian / ادبیات فارسی -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-xl">auto_stories</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">فارسی و نگارش</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">تسلط کامل بر آرایه‌ها و دستور زبان</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">۹۵٪</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">عالی</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary transition-all" style="width: 95%;"></div>
+</div>
+</div>
+<!-- Science / علوم تجربی -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">science</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">علوم تجربی</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">عملکرد درخشان در بخش فیزیک و شیمی</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">۹۲٪</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">بسیار خوب</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all" style="width: 92%;"></div>
+</div>
+</div>
+<!-- Mathematics / ریاضی هشتم -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-xl">calculate</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">ریاضیات</div>
+<span class="font-body-sm text-body-sm text-tertiary font-medium">نیاز به تمرین: فصل اعداد اول و جبر</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">۸۵٪</span>
+<span class="font-label-sm text-label-sm text-tertiary font-semibold">قابل ارتقا</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-tertiary transition-all" style="width: 85%;"></div>
+</div>
+</div>
+<!-- English / زبان انگلیسی -->
+<div class="p-3.5 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-xl bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-xl">translate</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">زبان انگلیسی</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">واژگان درس ۱ تا ۴ عالی</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">۹۸٪</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">عالی</span>
+</div>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary-container transition-all" style="width: 98%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Test Assessments History -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-xl">history_edu</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">آخرین آزمون‌های ارزیابی‌شده</h3>
+</div>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary" type="button">مشاهده آرشیو</button>
+</div>
+<!-- Exam Item 1: Math Chapter 2 -->
+<div class="p-space-md rounded-3xl bg-surface-container-lowest shadow-[0_4px_16px_rgba(15,23,42,0.03)] flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">quiz</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">آزمون تستی فصل دوم: حساب اعداد طبیعی</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">۱۸ آبان • مدت: ۳۵ دقیقه</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-xl bg-surface-container text-primary font-label-md text-label-md font-bold">نمره: ۸۸٪</span>
+</div>
+<!-- Test Stats Grid -->
+<div class="grid grid-cols-3 gap-2 py-1">
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface">۱۸ درست</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-on-surface">۲ نادرست</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface">۰ نزده</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 h-11 rounded-2xl bg-primary text-on-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-95 shadow-sm" onclick="alert('پاسخ‌نامه تشریحی آزمون ریاضی باز شد.')" type="button">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>پاسخ‌نامه تشریحی</span>
+</button>
+<button class="h-11 px-3.5 rounded-2xl bg-surface-container hover:bg-surface-container-high text-error font-label-md text-label-md flex items-center justify-center gap-1 transition-transform active:scale-95" onclick="alert('مرور ۲ تست غلط مبحث غربال و اعداد مرکب')" type="button">
+<span class="material-symbols-outlined text-lg">replay</span>
+<span>مرور ۲ غلط</span>
+</button>
+</div>
+</div>
+<!-- Exam Item 2: Comprehensive Science -->
+<div class="p-space-md rounded-3xl bg-surface-container-lowest shadow-[0_4px_16px_rgba(15,23,42,0.03)] flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-2xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-2xl">biotech</span>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-surface">آزمون جامع هماهنگ علوم تجربی</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">۱۴ آبان • مدت: ۴۰ دقیقه</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-xl bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold">نمره: ۹۴٪</span>
+</div>
+<!-- Test Stats Grid -->
+<div class="grid grid-cols-3 gap-2 py-1">
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-on-surface">۲۴ درست</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="text-on-surface">۱ نادرست</span>
+</div>
+<div class="flex items-center justify-center gap-1.5 py-1.5 rounded-xl bg-surface-container-low font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface">۰ نزده</span>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-2 pt-1">
+<button class="flex-1 h-11 rounded-2xl bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-95" onclick="alert('پاسخ‌نامه تشریحی آزمون علوم باز شد.')" type="button">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>پاسخ‌نامه و تحلیل ویدیویی</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Peer Comparison / Social Delight Card -->
+<div class="p-space-md rounded-3xl bg-surface-container flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-label-lg text-label-lg text-on-surface">به جمع مدال‌آوران خوش‌آمدی! 🏆</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        با حفظ این روند تا پایان ترم، مدال طلای برترین دانش‌آموز پایه هشتم به پروفایل درس‌یار شما تعلق خواهد گرفت.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  // Simple interaction for tab switching
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.filter-tab').forEach(t => {
+        t.className = 'filter-tab px-3 py-1.5 rounded-xl text-on-surface-variant font-label-md text-label-md transition-all hover:bg-surface-container-high active:scale-95';
+      });
+      this.className = 'filter-tab px-3 py-1.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md transition-all active:scale-95';
+    });
+  });
+</script></main>
+<script>
+(function(){
+  var N=18, ME=5;
+  function fa(x){var d='۰۱۲۳۴۵۶۷۸۹';return String(x).replace(/\d/g,function(c){return d[+c];});}
+  try{
+    var d=document.createElement('div');
+    d.id='darsyar-nav';
+    d.style.cssText="position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:10px;z-index:2147483000;display:flex;align-items:center;gap:2px;direction:ltr;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.9);border-radius:9999px;padding:4px 6px;box-shadow:0 10px 30px rgba(15,23,42,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.97;transition:opacity .2s;";
+    function mk(svg,href,label,extra){
+      var a=document.createElement('a');
+      a.setAttribute('aria-label',label); a.title=label;
+      a.style.cssText="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9999px;background:transparent;color:#475569;text-decoration:none;cursor:pointer;transition:background .15s,color .15s;";
+      a.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+svg+'</svg>';
+      if(href){a.href=href;}else{a.style.opacity='.32';a.style.pointerEvents='none';}
+      a.addEventListener('mouseenter',function(){a.style.background='#EEF2FF';a.style.color='#4F46E5';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';a.style.color='#475569';});
+      Object.assign(a.style,extra||{});
+      return a;
+    }
+    var HOME='<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>';
+    var ARR_L='<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>';
+    var ARR_R='<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>';
+    if(localStorage.getItem('darsyarNavHidden')==='1'){d.style.display='none';}
+    d.appendChild(mk(ARR_R, ME>1?('s'+(ME-1)+'.html'):null, 'صفحه قبلی'));
+    var home=mk(HOME,'index.html','فهرست صفحات');
+    home.style.background='#4F46E5'; home.style.color='#fff';
+    home.addEventListener('mouseenter',function(){home.style.background='#4338CA';});
+    home.addEventListener('mouseleave',function(){home.style.background='#4F46E5';});
+    d.appendChild(home);
+    var c=document.createElement('span');
+    c.style.cssText="font-family:Vazirmatn,sans-serif;font-size:11px;font-weight:700;color:#475569;direction:rtl;padding:0 6px;white-space:nowrap;user-select:none;";
+    c.textContent=fa(ME)+' / '+fa(N);
+    d.appendChild(c);
+    d.appendChild(mk(ARR_L, ME<N?('s'+(ME+1)+'.html'):null, 'صفحه بعدی'));
+    document.body.appendChild(d);
+    // swipe navigation (skips horizontal scrollers/carousels)
+    var x0=0,y0=0,t0=0,ok=false;
+    document.addEventListener('touchstart',function(e){
+      if(e.touches.length!==1)return;
+      var t=e.target,el=t;
+      while(el&&el!==document){
+        if(el.scrollWidth>el.clientWidth+8&&el.clientWidth>0){var ox=getComputedStyle(el).overflowX;if(ox==='auto'||ox==='scroll'||ox==='overlay'){ok=false;return;}}
+        el=el.parentElement;
+      }
+      x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();ok=true;
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      if(!ok||e.changedTouches.length!==1)return;
+      var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+      if(Math.abs(dx)>75&&Math.abs(dx)>1.7*Math.abs(dy)&&Date.now()-t0<800){
+        if(dx<0&&ME<N)location.href='s'+(ME+1)+'.html';
+        else if(dx>0&&ME>1)location.href='s'+(ME-1)+'.html';
+      }
+      ok=false;
+    },{passive:true});
+  }catch(err){}
+})();
+</script>
+</body></html>

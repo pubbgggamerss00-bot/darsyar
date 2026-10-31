@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+<title>درس‌یار | فهرست صفحات</title>
+<link href="assets/fonts.css" rel="stylesheet"/>
+<script src="assets/tailwind.js"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      primary: '#4F46E5', primaryContainer: '#EEF2FF',
+      secondary: '#06B6D4', tertiary: '#F59E0B',
+      success: '#10B981',
+      'bg-canvas': '#F8FAFC', 'text-primary': '#0F172A',
+      'text-secondary': '#475569', 'text-tertiary': '#94A3B8',
+      'border-subtle': '#E2E8F0'
+    },
+    fontFamily: { vazir: ['Vazirmatn', 'sans-serif'] }
+  } }
+};
+</script>
+<style>
+  html, body { margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; background: #F8FAFC; }
+  ::-webkit-scrollbar { display: none; }
+  .card-press { transition: transform .12s ease, box-shadow .12s ease; }
+  .card-press:active { transform: scale(.975); }
+  .hero-glow {
+    background:
+      radial-gradient(120px 120px at 15% 20%, rgba(6,182,212,.22), transparent 70%),
+      radial-gradient(140px 140px at 85% 80%, rgba(245,158,11,.16), transparent 70%),
+      linear-gradient(135deg, #4F46E5 0%, #6366F1 55%, #06B6D4 130%);
+  }
+</style>
+</head>
+<body class="font-vazir text-text-primary bg-bg-canvas min-h-screen">
+<main class="mx-auto max-w-md px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-10">
+
+  <!-- Hero -->
+  <header class="hero-glow relative overflow-hidden rounded-3xl p-6 mb-5 text-white shadow-lg shadow-indigo-500/20">
+    <div class="flex items-center gap-3">
+      <div class="w-14 h-14 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center border border-white/25">
+        <span class="material-symbols-outlined" style="font-size:30px; font-variation-settings:'FILL' 1;">school</span>
+      </div>
+      <div>
+        <h1 class="text-[22px] font-extrabold leading-8">درس‌یار</h1>
+        <p class="text-[13px] text-white/85 font-medium">همراه آموزشی دوره اول متوسطه</p>
+      </div>
+    </div>
+    <p class="mt-4 text-[13px] leading-6 text-white/90">
+      فهرست <b>۱۸ صفحهٔ طراحی‌شده</b> پروژه — برای مرور، هر صفحه را باز کنید؛ با دکمه‌های کنار صفحه یا کشیدن انگشت بین صفحات جابه‌جا شوید.
+    </p>
+    <div class="mt-3 flex flex-wrap gap-1.5">
+      <span class="bg-white/15 border border-white/20 rounded-full px-2.5 py-1 text-[11px] font-bold">۴ بخش</span>
+      <span class="bg-white/15 border border-white/20 rounded-full px-2.5 py-1 text-[11px] font-bold">۱۸ صفحه</span>
+      <span class="bg-white/15 border border-white/20 rounded-full px-2.5 py-1 text-[11px] font-bold">کاملاً آفلاین</span>
+    </div>
+  </header>
+
+  <div id="sections"></div>
+
+  <p class="text-center text-[11px] text-text-tertiary mt-6 leading-5">
+    درس‌یار نسخه ۱٫۰ • ساخته‌شده از طرح‌های استیچ
+  </p>
+</main>
+
+<script>
+var GROUPS = [
+  { name: 'شروع', icon: 'rocket_launch', color: '#4F46E5', bg: '#EEF2FF', items: [
+    { n: 1,  t: 'انتخاب پایه تحصیلی',   d: 'صفحه خوش‌آمد و انتخاب پایه هفتم تا نهم' },
+    { n: 2,  t: 'داشبورد اصلی',         d: 'تمرکز امروز، نشان‌ها و دسترسی سریع' },
+  ]},
+  { name: 'هوش مصنوعی دانا', icon: 'smart_toy', color: '#0891B2', bg: '#CFFAFE', items: [
+    { n: 4,  t: 'گفت‌وگو با دانا',       d: 'پرسش سوال با عکس یا متن، پاسخ قدم‌به‌قدم' },
+    { n: 5,  t: 'تحلیل عملکرد با دانا',  d: 'گزارش نقاط قوت و ضعف درس‌ها' },
+    { n: 6,  t: 'آزمون‌ساز دانا',        d: 'ساخت آزمون سفارشی در چند کلیک' },
+  ]},
+  { name: 'درس‌ها و کتاب‌ها', icon: 'menu_book', color: '#B45309', bg: '#FEF3C7', items: [
+    { n: 3,  t: 'جزئیات درس: عددهای اول',  d: 'درس، تمرین و پرسش از دانا' },
+    { n: 7,  t: 'گام‌به‌گام: حساب اعداد طبیعی', d: 'حل تشریحی تمرین‌های کتاب' },
+    { n: 8,  t: 'کتابخانه کتب درسی',        d: 'کتاب‌های رسمی و گام‌به‌گام' },
+    { n: 9,  t: 'حل تمرین قدم‌به‌قدم',       d: 'حل تمرین ۱، صفحه ۳۲' },
+    { n: 11, t: 'فهرست کتاب ریاضی هشتم',    d: 'سال تحصیلی ۱۴۰۳–۱۴۰۴' },
+  ]},
+  { name: 'کتاب‌خوان تعاملی', icon: 'auto_stories', color: '#059669', bg: '#D1FAE5', items: [
+    { n: 10, t: 'کتاب‌خوان: کار در کلاس',        d: 'صفحه‌های ۳۲ و ۳۳ با لایه هوشمند' },
+    { n: 12, t: 'کتاب‌خوان: کار در کلاس (۲)',    d: 'نسخه دوم صفحه‌های ۳۲ و ۳۳' },
+    { n: 13, t: 'کتاب‌خوان: ارمغان ایران',        d: 'فارسی هشتم، درس چهارم' },
+    { n: 14, t: 'نکته طلایی: تغییر شیمیایی',     d: 'علوم — مرور شب امتحان' },
+    { n: 15, t: 'درس: زاویه‌های چندضلعی',         d: 'ریاضی — حالت کتاب واقعی' },
+    { n: 16, t: 'کتاب‌خوان: کار در کلاس (۳)',     d: 'نسخه سوم صفحه‌های ۳۲ و ۳۳' },
+    { n: 17, t: 'کتاب‌خوان: ارمغان ایران (۲)',    d: 'نسخه دوم درس چهارم' },
+    { n: 18, t: 'نکته طلایی (۲)',                 d: 'نسخه دوم مرور شب امتحان' },
+  ]},
+];
+
+var fa = function(x){ var d='۰۱۲۳۴۵۶۷۸۹'; return String(x).replace(/\d/g, function(c){ return d[+c]; }); };
+var root = document.getElementById('sections');
+GROUPS.forEach(function(g){
+  var sec = document.createElement('section');
+  sec.className = 'mb-5';
+  var head = '<div class="flex items-center gap-2 mb-2 px-1">'
+    + '<span class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:'+g.bg+';color:'+g.color+'">'
+    +   '<span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:\'FILL\' 1;">'+g.icon+'</span></span>'
+    + '<h2 class="text-[15px] font-extrabold" style="color:'+g.color+'">'+g.name+'</h2>'
+    + '<span class="text-[11px] font-bold text-text-tertiary bg-white border border-border-subtle rounded-full px-2 py-0.5">'+fa(g.items.length)+' صفحه</span>'
+    + '</div>';
+  var grid = document.createElement('div');
+  grid.className = 'grid grid-cols-1 gap-2';
+  g.items.forEach(function(it){
+    var a = document.createElement('a');
+    a.href = 's' + it.n + '.html';
+    a.className = 'card-press flex items-center gap-3 bg-white rounded-2xl p-3 border border-border-subtle shadow-sm';
+    a.innerHTML = '<span class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-extrabold text-[15px] shrink-0" '
+      + 'style="background:linear-gradient(135deg,'+g.color+',#4F46E5)">'+fa(it.n)+'</span>'
+      + '<span class="flex-1 min-w-0">'
+      + '<span class="block text-[14px] font-bold text-text-primary truncate">'+it.t+'</span>'
+      + '<span class="block text-[11.5px] text-text-secondary truncate">'+it.d+'</span></span>'
+      + '<span class="material-symbols-outlined text-text-tertiary" style="font-size:20px;">chevron_left</span>';
+    grid.appendChild(a);
+  });
+  sec.innerHTML = head;
+  sec.appendChild(grid);
+  root.appendChild(sec);
+});
+</script>
+</body>
+</html>

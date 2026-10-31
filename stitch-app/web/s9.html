@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="fa"><head><title>حل تمرین قدم‌به‌قدم</title><link href="assets/fonts.css" rel="stylesheet"/><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/>
+
+<style>@layer base{html,body{width:100vw;margin:0;padding:0;font-family:'Vazirmatn',sans-serif;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="assets/tailwind.js"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#2a1700", "error": "#ba1a1a", "background": "#f8f9ff", "tertiary-fixed": "#ffddb8", "surface-container-low": "#eff4ff", "on-tertiary-container": "#ffd4a4", "outline": "#777587", "on-secondary-container": "#006172", "surface": "#f8f9ff", "on-primary-fixed": "#0f0069", "primary": "#3525cd", "secondary": "#00687a", "inverse-on-surface": "#eaf1ff", "on-primary-container": "#dad7ff", "on-secondary": "#ffffff", "surface-container-highest": "#d3e4fe", "tertiary": "#684000", "secondary-fixed": "#acedff", "surface-dim": "#cbdbf5", "on-tertiary-fixed-variant": "#653e00", "on-tertiary": "#ffffff", "on-surface-variant": "#464555", "primary-fixed": "#e2dfff", "inverse-primary": "#c3c0ff", "surface-container": "#e5eeff", "surface-container-high": "#dce9ff", "on-primary-fixed-variant": "#3323cc", "surface-bright": "#f8f9ff", "surface-container-lowest": "#ffffff", "secondary-container": "#57dffe", "primary-fixed-dim": "#c3c0ff", "on-secondary-fixed": "#001f26", "error-container": "#ffdad6", "on-background": "#0b1c30", "tertiary-container": "#885500", "tertiary-fixed-dim": "#ffb95f", "outline-variant": "#c7c4d8", "on-error": "#ffffff", "surface-tint": "#4d44e3", "primary-container": "#4f46e5", "on-secondary-fixed-variant": "#004e5c", "secondary-fixed-dim": "#4cd7f6", "inverse-surface": "#213145", "on-error-container": "#93000a", "on-primary": "#ffffff", "surface-variant": "#d3e4fe", "on-surface": "#0b1c30" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "margin": "1rem", "space-sm": "0.5rem", "gutter-tablet": "1.25rem", "margin-tablet": "2rem", "gutter": "1rem", "space-md": "1rem", "space-xl": "2rem", "space-lg": "1.5rem" }, fontFamily: { "headline-md": ["Vazirmatn"], "body-lg": ["Vazirmatn"], "label-lg": ["Vazirmatn"], "label-sm": ["Vazirmatn"], "display": ["Vazirmatn"], "display-mobile": ["Vazirmatn"], "headline-lg": ["Vazirmatn"], "body-sm": ["Vazirmatn"], "headline-lg-mobile": ["Vazirmatn"], "body-md": ["Vazirmatn"], "headline-sm": ["Vazirmatn"], "label-md": ["Vazirmatn"] }, fontSize: { "headline-md": ["20px", { lineHeight: "32px", fontWeight: "700" }], "body-lg": ["16px", { lineHeight: "28px", fontWeight: "500" }], "label-lg": ["15px", { lineHeight: "24px", fontWeight: "700" }], "label-sm": ["11px", { lineHeight: "16px", fontWeight: "700" }], "display": ["36px", { lineHeight: "52px", fontWeight: "800" }], "display-mobile": ["28px", { lineHeight: "40px", fontWeight: "800" }], "headline-lg": ["28px", { lineHeight: "42px", fontWeight: "700" }], "body-sm": ["12px", { lineHeight: "20px", fontWeight: "400" }], "headline-lg-mobile": ["22px", { lineHeight: "34px", fontWeight: "700" }], "body-md": ["14px", { lineHeight: "24px", fontWeight: "400" }], "headline-sm": ["17px", { lineHeight: "28px", fontWeight: "600" }], "label-md": ["13px", { lineHeight: "20px", fontWeight: "600" }] } } } }</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 px-space-md flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface truncate max-w-[200px]">Step By Step Solution</h1></div><button aria-label="بازگشت" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high/40 transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_forward_ios</span></button></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-surface"><div class="flex flex-col w-full pb-24">
+<!-- Lesson Header Banner -->
+<section class="px-space-md pt-space-md">
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-sm relative overflow-hidden">
+<div class="absolute -left-12 -top-12 w-40 h-40 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-secondary-container/20 rounded-full blur-xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">menu_book</span>
+              کتاب رسمی آموزش و پرورش
+            </span>
+<span class="bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-full font-label-sm text-label-sm font-bold">
+              پایه هشتم
+            </span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">auto_stories</span>
+<span>صفحات ۳۰ تا ۴۸</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">ریاضی هشتم</span>
+<span class="text-on-surface-variant font-body-sm text-body-sm">|</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">فصل ۳: چندضلعی‌ها و تقارن</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          حل‌المسائل مو‌به‌مو، فعالیت‌های کارگاهی، پاسخ کار در کلاس، و چکیده طلایی شب امتحان با متد تألیفی کلاغ سپید و گاج.
+        </p>
+<!-- Chapter Progress & Quick Meta -->
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">تأییدیه پاسخ‌های دبیرخانه کشوری</span>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[15px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>۴۴ تمرین حل‌شده</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Horizontal Filter Pills -->
+<section class="mt-space-md px-space-md">
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<button class="shrink-0 bg-primary text-on-primary px-4 py-2.5 rounded-full font-label-md text-label-md shadow-sm flex items-center gap-1.5 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[18px]">grid_view</span>
+<span>همه بخش‌ها</span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">draw</span>
+<span>پاسخ فعالیت‌ها</span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-secondary">flash_on</span>
+<span>کار در کلاس</span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary-container">task_alt</span>
+<span>تمرین‌های پایانی</span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-tertiary">assignment</span>
+<span>حل کاربرگه‌ها</span>
+</button>
+<button class="shrink-0 bg-surface-container-lowest text-on-surface px-4 py-2.5 rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-error">star</span>
+<span>نکات امتحانی</span>
+</button>
+</div>
+</section>
+<!-- Quick Download / Action Bar -->
+<section class="px-space-md mt-space-sm">
+<div class="bg-surface-container-high rounded-2xl p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2 pr-1">
+<div class="w-8 h-8 rounded-xl bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-bold">دفترچه گام‌به‌گام فصل ۳ (PDF کامل)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">حجم: ۴.۲ مگابایت • چاپ کیفیت عالی</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-3.5 py-1.5 rounded-xl font-label-sm text-label-sm flex items-center gap-1 shadow-sm active:translate-y-0.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>دانلود</span>
+</button>
+</div>
+</section>
+<!-- CONTENT ITEM 1: Exercise Solution (Page 32) -->
+<article class="px-space-md mt-space-md flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Exercise Header Badge -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center">۱</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">حل تمرین ۱ — صفحه ۳۲</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">مبحث: محاسبه مجموع زاویه‌های داخلی n-ضلعی</p>
+</div>
+</div>
+<span class="bg-surface-container-high text-on-surface px-3 py-1 rounded-full font-label-sm text-label-sm">
+          کتاب درسی
+        </span>
+</div>
+<!-- Question Text with Official Book Look -->
+<div class="bg-surface-container-low rounded-2xl p-space-md flex flex-col gap-2">
+<div class="flex items-center gap-1 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">help_center</span>
+<span>متن سوال کتاب درسی:</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+          «مجموع زاویه‌های داخلی یک ۷ ضلعی محدب را به دست آورید. سپس اندازه هر یک از زاویه‌های داخلی آن را در حالتی که ۷ ضلعی منتظم باشد، تا یک رقم اعشار محاسبه کنید.»
+        </p>
+</div>
+<!-- Illustrated Diagram Placeholder -->
+<div class="relative w-full h-44 rounded-2xl overflow-hidden bg-surface-container-low flex flex-col justify-end p-space-sm">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A clean textbook geometry vector illustration of a regular heptagon (7-sided polygon) showing diagonals drawn from one vertex dividing the polygon into 5 colorful triangles. Mathematical diagram style with labeled interior angles, indigo and cyan gradient vectors, warm educational background." src="assets/img/86af7925191e.jpg"/>
+<div class="relative z-10 bg-surface-container-lowest/90 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between text-on-surface shadow-sm">
+<span class="font-label-sm text-label-sm font-bold">شکل راهنما: افراز ۷-ضلعی به ۵ مثلث با رسم قطرها</span>
+<span class="font-label-sm text-label-sm text-primary">صفحه ۳۲ کتاب</span>
+</div>
+</div>
+<!-- Step-by-Step Rigorous Solution -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-1.5 text-secondary font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>پاسخ تشریحی استاندارد و گام‌به‌گام:</span>
+</div>
+<!-- Step 1 -->
+<div class="flex items-start gap-3 bg-surface-container-low/70 rounded-2xl p-space-md">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5">
+            الف
+          </div>
+<div class="flex flex-col gap-1.5 w-full">
+<span class="font-label-md text-label-md text-on-surface font-bold">محاسبه مجموع زاویه‌های داخلی:</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              با توجه به فرمول کتاب درسی، از یک رأس ۷ ضلعی می‌توان به ۴ رأس دیگر قطر رسم کرد که شکل را به <span class="font-bold text-on-surface">(n - ۲)</span> یعنی ۵ مثلث مجزا تبدیل می‌کند:
+            </p>
+<!-- Highlight Formula Block -->
+<div class="bg-primary/5 rounded-xl p-3 flex flex-col gap-1 text-primary font-mono text-center">
+<span class="font-headline-sm text-headline-sm font-bold">S = (n - 2) × 180°</span>
+<span class="font-body-lg text-body-lg text-on-surface">S = (7 - 2) × 180° = 5 × 180° = <strong class="text-primary font-bold">900°</strong></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              بنابراین مجموع زوایای داخلی برابر با <strong class="text-on-surface">۹۰۰ درجه</strong> است.
+            </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3 bg-surface-container-low/70 rounded-2xl p-space-md">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5">
+            ب
+          </div>
+<div class="flex flex-col gap-1.5 w-full">
+<span class="font-label-md text-label-md text-on-surface font-bold">محاسبه هر زاویه در ۷-ضلعی منتظم:</span>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              چون ۷ ضلعی منتظم است، تمام ۷ زاویه داخلی با هم برابرند. مجموع زوایا را بر تعداد اضلاع تقسیم می‌کنیم:
+            </p>
+<div class="bg-secondary/10 rounded-xl p-3 flex items-center justify-center text-secondary font-mono">
+<span class="font-headline-sm text-headline-sm font-bold">A = 900° ÷ 7 ≈ 128.57° ≈ 128.6°</span>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-high rounded-lg p-2 text-on-surface font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<span>گرد کردن با تقریب کمتر از ۰.۱ به درخواست طراح کتاب: ۱۲۸.۶ درجه.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- CONTENT ITEM 2: Activity Solution (Page 33) -->
+<article class="px-space-md mt-space-md flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-secondary-container text-on-secondary-container font-headline-sm text-headline-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">پاسخ فعالیت صفحه ۳۳</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">مبحث: مرکز تقارن و دوران ۱۸۰ درجه شکل‌ها</p>
+</div>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">
+          فعالیت کلاسی
+        </span>
+</div>
+<!-- Activity Visual Demonstration -->
+<div class="relative w-full h-40 rounded-2xl overflow-hidden bg-surface-container-low flex items-end p-space-sm">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="Clear modern infographic demonstrating 180 degree geometric rotational symmetry of a parallelogram and an equilateral triangle around a central pivot point. Persian educational workbook style with vibrant colors, soft violet glow, clean instructional arrows." src="assets/img/0ae6bd6f7283.jpg"/>
+<div class="relative z-10 bg-surface-container-lowest/90 backdrop-blur-md rounded-xl px-3 py-1 text-on-surface shadow-sm font-label-sm text-label-sm">
+          نمایش نحوه دوران حول نقطه مرکز تقارن O
+        </div>
+</div>
+<!-- Activity Task Steps Table -->
+<div class="flex flex-col gap-2">
+<span class="font-label-md text-label-md text-on-surface font-bold">تکمیل جدول فعالیت کتاب درسی:</span>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden">
+<div class="grid grid-cols-3 bg-surface-container-high text-on-surface font-label-sm text-label-sm p-3 font-bold text-center">
+<div>شکل هندسی</div>
+<div>محور تقارن</div>
+<div>مرکز تقارن</div>
+</div>
+<div class="grid grid-cols-3 p-3 text-center font-body-sm text-body-sm text-on-surface">
+<div class="font-bold text-primary">متوازی‌الاضلاع</div>
+<div class="text-error font-bold">ندارد (۰)</div>
+<div class="text-secondary font-bold">دارد (۱ مرکز)</div>
+</div>
+<div class="grid grid-cols-3 p-3 bg-surface-container/50 text-center font-body-sm text-body-sm text-on-surface">
+<div class="font-bold text-primary">مستطیل</div>
+<div class="text-secondary font-bold">دارد (۲ محور)</div>
+<div class="text-secondary font-bold">دارد (۱ مرکز)</div>
+</div>
+<div class="grid grid-cols-3 p-3 text-center font-body-sm text-body-sm text-on-surface">
+<div class="font-bold text-primary">مثلث متساوی‌الاضلاع</div>
+<div class="text-secondary font-bold">دارد (۳ محور)</div>
+<div class="text-error font-bold">ندارد (۰)</div>
+</div>
+</div>
+</div>
+<!-- Final Educational Deduction -->
+<div class="bg-secondary-container/30 text-on-secondary-container rounded-2xl p-space-md flex items-start gap-2.5">
+<span class="material-symbols-outlined text-[20px] text-secondary mt-0.5">lightbulb</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-md text-label-md font-bold">نتیجه‌گیری نهایی فعالیت:</span>
+<p class="font-body-sm text-body-sm leading-relaxed">
+            شکل‌هایی که دارای تقارن چرخشی ۱۸۰ درجه هستند دقیقاً روی خودشان منطبق می‌شوند و نقطه تقاطع قطرها همان مرکز تقارن است. چندضلعی‌های منتظم با تعداد اضلاع زوج همواره مرکز تقارن دارند، اما با اضلاع فرد فاقد مرکز تقارن‌اند.
+          </p>
+</div>
+</div>
+</div>
+</article>
+<!-- CONTENT ITEM 3: Golden Exam Hint (Kalagh Sepid style) -->
+<section class="px-space-md mt-space-md">
+<div class="bg-tertiary-fixed rounded-3xl p-space-lg shadow-sm relative overflow-hidden flex flex-col gap-space-sm text-on-tertiary-fixed">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+</span>
+<h3 class="font-headline-sm text-headline-sm font-bold">نکته طلایی و تله تستی امتحانی (شب امتحان)</h3>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-2.5 py-0.5 rounded-full font-label-sm text-label-sm">
+          بارم ۲ نمره
+        </span>
+</div>
+<p class="font-body-md text-body-md leading-relaxed text-on-tertiary-fixed">
+        ⚠️ <strong class="font-bold">دام امتحانی بسیار متداول نوبت اول:</strong> طراحان امتحان معمولاً می‌پرسند: «آیا هر چندضلعی که مرکز تقارن دارد، محور تقارن هم دارد؟»
+      </p>
+<div class="bg-surface-container-lowest/80 rounded-2xl p-space-md text-on-surface flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-error font-bold font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+<span>پاسخ غلط رایج دانش‌آموزان: «بله، اگر مرکز داشته باشد حتماً خط تا هم دارد!»</span>
+</div>
+<div class="flex items-center gap-1.5 text-secondary font-bold font-label-md text-label-md mt-1">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span>پاسخ صحیح و کامل برای نمره کامل:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pr-6">
+          «خیر! مثال نقض واضح، متوازی‌الاضلاع غیرخاص است که مرکز تقارن دارد اما هیچ خط یا محور تقارنی ندارد.»
+        </p>
+</div>
+</div>
+</section>
+<!-- CONTENT ITEM 4: Workbook Worksheet Solution (کاربرگه شماره ۴) -->
+<article class="px-space-md mt-space-md flex flex-col gap-space-sm">
+<div class="bg-surface-container-lowest rounded-3xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-9 h-9 rounded-2xl bg-surface-container-high text-primary font-headline-sm text-headline-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">حل کاربرگه شماره ۴ انتشارات درسی</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">تمرین‌های مهارتی تکمیلی و سوالات کاوشی</p>
+</div>
+</div>
+<span class="bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm font-bold">
+          کاربرگه مهارتی
+        </span>
+</div>
+<!-- Question Prompt -->
+<div class="bg-surface-container-low rounded-2xl p-space-md">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+<strong class="text-primary font-bold">سوال ۱ کاربرگه:</strong> زاویه خارجی یک ۱۰ ضلعی منتظم چند درجه است؟ آیا کاشی‌کاری با این ۱۰ ضلعی به تنهایی امکان‌پذیر است؟ چرا؟
+        </p>
+</div>
+<!-- Worksheet Solution Box -->
+<div class="bg-surface-container-low/70 rounded-2xl p-space-md flex flex-col gap-space-sm">
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-1">۱</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-label-md text-label-md text-on-surface font-bold">محاسبه زاویه خارجی:</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">مجموع زوایای خارجی هر n-ضلعی همواره برابر با ۳۶۰ درجه است:</p>
+<div class="bg-surface-container-lowest rounded-xl p-2.5 text-center font-mono font-bold text-primary font-headline-sm text-headline-sm">
+              زاویه خارجی = 360° ÷ 10 = 36°
+            </div>
+</div>
+</div>
+<div class="flex items-start gap-2 pt-2">
+<div class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-1">۲</div>
+<div class="flex flex-col gap-1 w-full">
+<span class="font-label-md text-label-md text-on-surface font-bold">بررسی امکان کاشی‌کاری تک‌شکلی:</span>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+              زاویه داخلی برابر است با: <span class="font-bold text-secondary">۱۸۰ - ۳۶ = ۱۴۴ درجه</span>.
+              چون عدد ۳۶۰ بر ۱۴۴ بخش‌پذیر نیست (<span class="font-mono font-bold">360 ÷ 144 = 2.5</span> و عدد صحیح به دست نمی‌آید)، <strong class="text-error">کاشی‌کاری به تنهایی امکان‌پذیر نیست</strong> و فضاهای خالی پر نمی‌شوند.
+            </p>
+</div>
+</div>
+</div>
+<!-- Worksheet Interactive Status -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">visibility</span>
+<span>مشاهده پاسخ دستی دست‌نویس دبیر</span>
+</div>
+<button class="bg-surface-container-high text-primary px-3 py-1.5 rounded-xl font-label-sm text-label-sm font-bold flex items-center gap-1 active:scale-95 transition-transform">
+<span>بزرگ‌نمایی تصویر حل</span>
+<span class="material-symbols-outlined text-[16px]">zoom_in</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Page Navigation Controls -->
+<section class="px-space-md mt-space-lg flex items-center justify-between gap-3">
+<button class="flex-1 bg-surface-container-lowest text-on-surface rounded-2xl py-3 px-4 shadow-sm flex items-center justify-center gap-2 hover:bg-surface-container transition-colors active:scale-98">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">درس قبلی</span>
+<span class="font-label-md text-label-md font-bold">فصل ۲: اعداد اول</span>
+</div>
+</button>
+<div class="bg-surface-container-high px-3 py-2 rounded-2xl font-label-sm text-label-sm text-on-surface text-center">
+      صفحه ۳۲ از ۴۸
+    </div>
+<button class="flex-1 bg-surface-container-lowest text-on-surface rounded-2xl py-3 px-4 shadow-sm flex items-center justify-center gap-2 hover:bg-surface-container transition-colors active:scale-98">
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm text-on-surface-variant">درس بعدی</span>
+<span class="font-label-md text-label-md font-bold">فصل ۴: جبر و معادله</span>
+</div>
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+</section>
+<!-- Floating Sticky Ask-AI "دانا" Action Trigger -->
+<div class="fixed bottom-4 left-4 right-4 z-40 max-w-md mx-auto pointer-events-none">
+<div class="pointer-events-auto bg-primary text-on-primary rounded-2xl p-space-sm shadow-xl flex items-center justify-between backdrop-blur-md">
+<div class="flex items-center gap-2.5 pr-2">
+<div class="w-10 h-10 rounded-full bg-on-primary text-primary flex items-center justify-center shadow-sm relative">
+<span class="material-symbols-outlined text-[22px]">smart_toy</span>
+<span class="absolute top-0 right-0 w-3 h-3 bg-secondary-container rounded-full ring-2 ring-primary animate-pulse"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">سوالی نامفهوم بود؟</span>
+<span class="font-body-sm text-body-sm text-primary-fixed">از هوش مصنوعی «دانا» بپرس یا ویس بفرست</span>
+</div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-3.5 py-2 rounded-xl font-label-md text-label-md font-bold flex items-center gap-1 shadow-sm active:scale-95 transition-transform" id="ask-ai-btn">
+<span>حل سوال مشابه</span>
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Micro-interaction for the Floating AI button
+  document.getElementById('ask-ai-btn')?.addEventListener('click', function() {
+    this.classList.add('scale-95');
+    setTimeout(() => {
+      this.classList.remove('scale-95');
+      alert('دستیار هوشمند دانا آماده است! سوال خود را بنویسید یا عکس صفحه را ارسال کنید.');
+    }, 120);
+  });
+</script></main>
+<script>
+(function(){
+  var N=18, ME=9;
+  function fa(x){var d='۰۱۲۳۴۵۶۷۸۹';return String(x).replace(/\d/g,function(c){return d[+c];});}
+  try{
+    var d=document.createElement('div');
+    d.id='darsyar-nav';
+    d.style.cssText="position:fixed;bottom:calc(10px + env(safe-area-inset-bottom,0px));left:10px;z-index:2147483000;display:flex;align-items:center;gap:2px;direction:ltr;background:rgba(255,255,255,.94);border:1px solid rgba(226,232,240,.9);border-radius:9999px;padding:4px 6px;box-shadow:0 10px 30px rgba(15,23,42,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.97;transition:opacity .2s;";
+    function mk(svg,href,label,extra){
+      var a=document.createElement('a');
+      a.setAttribute('aria-label',label); a.title=label;
+      a.style.cssText="display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9999px;background:transparent;color:#475569;text-decoration:none;cursor:pointer;transition:background .15s,color .15s;";
+      a.innerHTML='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+svg+'</svg>';
+      if(href){a.href=href;}else{a.style.opacity='.32';a.style.pointerEvents='none';}
+      a.addEventListener('mouseenter',function(){a.style.background='#EEF2FF';a.style.color='#4F46E5';});
+      a.addEventListener('mouseleave',function(){a.style.background='transparent';a.style.color='#475569';});
+      Object.assign(a.style,extra||{});
+      return a;
+    }
+    var HOME='<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>';
+    var ARR_L='<path d="M19 12H5"/><path d="m11 18-6-6 6-6"/>';
+    var ARR_R='<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>';
+    if(localStorage.getItem('darsyarNavHidden')==='1'){d.style.display='none';}
+    d.appendChild(mk(ARR_R, ME>1?('s'+(ME-1)+'.html'):null, 'صفحه قبلی'));
+    var home=mk(HOME,'index.html','فهرست صفحات');
+    home.style.background='#4F46E5'; home.style.color='#fff';
+    home.addEventListener('mouseenter',function(){home.style.background='#4338CA';});
+    home.addEventListener('mouseleave',function(){home.style.background='#4F46E5';});
+    d.appendChild(home);
+    var c=document.createElement('span');
+    c.style.cssText="font-family:Vazirmatn,sans-serif;font-size:11px;font-weight:700;color:#475569;direction:rtl;padding:0 6px;white-space:nowrap;user-select:none;";
+    c.textContent=fa(ME)+' / '+fa(N);
+    d.appendChild(c);
+    d.appendChild(mk(ARR_L, ME<N?('s'+(ME+1)+'.html'):null, 'صفحه بعدی'));
+    document.body.appendChild(d);
+    // swipe navigation (skips horizontal scrollers/carousels)
+    var x0=0,y0=0,t0=0,ok=false;
+    document.addEventListener('touchstart',function(e){
+      if(e.touches.length!==1)return;
+      var t=e.target,el=t;
+      while(el&&el!==document){
+        if(el.scrollWidth>el.clientWidth+8&&el.clientWidth>0){var ox=getComputedStyle(el).overflowX;if(ox==='auto'||ox==='scroll'||ox==='overlay'){ok=false;return;}}
+        el=el.parentElement;
+      }
+      x0=e.touches[0].clientX;y0=e.touches[0].clientY;t0=Date.now();ok=true;
+    },{passive:true});
+    document.addEventListener('touchend',function(e){
+      if(!ok||e.changedTouches.length!==1)return;
+      var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+      if(Math.abs(dx)>75&&Math.abs(dx)>1.7*Math.abs(dy)&&Date.now()-t0<800){
+        if(dx<0&&ME<N)location.href='s'+(ME+1)+'.html';
+        else if(dx>0&&ME>1)location.href='s'+(ME-1)+'.html';
+      }
+      ok=false;
+    },{passive:true});
+  }catch(err){}
+})();
+</script>
+</body></html>
