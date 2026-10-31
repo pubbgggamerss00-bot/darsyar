@@ -6,7 +6,7 @@
 
 | فایل | حجم | لینک |
 |---|---|---|
-| Darsyar-v1.0.apk | ۶٫۱ MB | [Releases](../../releases) — فایل `Darsyar-v1.0.apk` |
+| Darsyar-v1.1.apk | ۶٫۱ MB | [Releases](../../releases) — فایل `Darsyar-v1.0.apk` |
 
 ### نصب
 1. فایل APK را روی گوشی اندروید (۷٫۰ به بالا) دانلود کنید.
